@@ -26,6 +26,8 @@ namespace Mink_Player
         // instance from File Dialog for open file to add to list.
         static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog();
 
+        static MainDashboard MainDashboard = new MainDashboard();
+
         #endregion
 
 
@@ -41,7 +43,9 @@ namespace Mink_Player
 
             TrayMaker();
 
-            // Run my instanced application 
+            MainDashboard.Show();
+
+            // Run application 
             MyApp.Run();
 
         }//End of Main
