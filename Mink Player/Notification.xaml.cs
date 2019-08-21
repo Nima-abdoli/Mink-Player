@@ -10,19 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Mink_Player
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Notification.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Notification : Window
     {
-        public MainWindow()
+        public Notification()
         {
             InitializeComponent();
+            Left = SystemParameters.WorkArea.Width - (Width + 10);
+            Top = SystemParameters.WorkArea.Height - (Height + 10);
         }
     }
 }

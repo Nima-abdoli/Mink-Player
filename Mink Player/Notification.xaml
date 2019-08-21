@@ -1,0 +1,76 @@
+﻿<Window x:Class="Mink_Player.Notification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mink_Player"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Notification" 
+        ShowInTaskbar="False"
+        Height="150" Width="330" 
+        Background="{x:Null}" 
+        ResizeMode="NoResize">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="BackMask" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="15" Background="#FF646464"/>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="15" Background="#FF616060">
+            <Border.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=BackMask}"/>
+            </Border.OpacityMask>
+
+            <Image x:Name="BackRound_Image" Source="Image/Background/cover.jpg" Stretch="UniformToFill" >
+                <Image.Effect>
+                    <BlurEffect Radius="50" />
+                </Image.Effect>
+            </Image>
+
+        </Border>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="NameTrack_TxtBl" Text="Banks of Allatoona mllatoona nllatoona" Grid.Row="0" HorizontalAlignment="Center"
+                       Margin="2 10 2 5" FontSize="16" TextTrimming="CharacterEllipsis"/>
+
+            <TextBlock x:Name="Nameartist_TxtBl" Text="Larking Poe" Grid.Row="1" HorizontalAlignment="Center"
+                       Margin="2 3" FontSize="14"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 5 0 0">
+                <Button x:Name="btn1" Content="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0"/>
+                <Button x:Name="btn2" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0"/>
+                <Button x:Name="btn3" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" BorderBrush="{x:Null}" Margin="10 0"/>
+            </StackPanel>
+        </Grid>
+
+        <Border x:Name="Cover_Image" Margin="0 0 15 0" Width="120" Height="120" CornerRadius="10" Grid.RowSpan="2" Grid.Column="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
+            </Border.Effect>
+            <Border.Background>
+                <ImageBrush ImageSource="Image/Background/cover.jpg" Stretch="Uniform"/>
+            </Border.Background>
+        </Border>
+
+
+    </Grid>
+
+</Window>
