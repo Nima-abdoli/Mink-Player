@@ -11,7 +11,9 @@
         ShowInTaskbar="False"
         Height="150" Width="330" 
         Background="{x:Null}" 
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        Topmost="True" Activated="Window_Activated">
 
     <Grid >
         <Grid.RowDefinitions>
@@ -54,7 +56,7 @@
             <TextBlock x:Name="NameTrack_TxtBl" Text="Banks of Allatoona mllatoona nllatoona" Grid.Row="0" HorizontalAlignment="Center"
                        Margin="2 10 2 5" FontSize="16" TextTrimming="CharacterEllipsis" Foreground="White"/>
 
-            <TextBlock x:Name="Nameartist_TxtBl" Text="Larking Poe" Grid.Row="1" HorizontalAlignment="Center"
+            <TextBlock x:Name="NameArtist_TxtBl" Text="Larking Poe" Grid.Row="1" HorizontalAlignment="Center"
                        Margin="2 3" FontSize="14" TextTrimming="CharacterEllipsis" Foreground="White"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 5 0 0">
