@@ -63,9 +63,29 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon NotifyIcon {
+        internal static System.Drawing.Icon Tray_Empty {
             get {
-                object obj = ResourceManager.GetObject("NotifyIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("Tray_Empty", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Tray_Play {
+            get {
+                object obj = ResourceManager.GetObject("Tray_Play", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Tray_Puase {
+            get {
+                object obj = ResourceManager.GetObject("Tray_Puase", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

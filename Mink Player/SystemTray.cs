@@ -16,7 +16,7 @@ namespace Mink_Player
         public SystemTray()
         {
             // Setup notify Icon
-            MyNotify.Icon = Properties.Resources.NotifyIcon;
+            MyNotify.Icon = Properties.Resources.Tray_Empty;
             MyNotify.Visible = true;
             
             MyNotify.ContextMenu = mContextMenu;

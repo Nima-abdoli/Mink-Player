@@ -22,8 +22,8 @@ namespace Mink_Player
         public Notification()
         {
             InitializeComponent();
-            Left = SystemParameters.WorkArea.Width - (Width + 10);
-            Top = SystemParameters.WorkArea.Height - (Height + 10);
+            Left = SystemParameters.WorkArea.Width - (Width + 15);
+            Top = SystemParameters.WorkArea.Height - (Height + 15);
         }
     }
 }
