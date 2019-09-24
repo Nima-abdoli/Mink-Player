@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Margin="50 0 0 0">
+            <Button x:Name="BigBtn" Content="Make it big" Margin="1 2" Click="BigBtn_Click"/>
+            <Button x:Name="shortBtn" Content="Make it Short" Margin="1 2" Click="ShortBtn_Click"/>
+            <Button x:Name="NormalBtn" Content="Make it Normal" Margin="1 2" Click="NormalBtn_Click"/>
+            <Button x:Name="FadeOutBtn" Content="Fade Out" Margin="1 2" Click="FadeOutBtn_Click" />
+            <Button x:Name="FadeInBtn" Content="Fade In" Margin="1 2" Click="FadeInBtn_Click" />
+            <Button x:Name="CornerBtn" Content="Corner it" Margin="1 2" Click="CornerBtn_Click"/>
+            
+        </StackPanel>
+
+        <Rectangle x:Name="MyRect" Grid.Column="0" Width="300">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Chocolate"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
     </Grid>
 </Window>

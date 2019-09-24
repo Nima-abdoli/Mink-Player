@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Windows.Media;
 
 namespace Mink_Player
 {
@@ -17,15 +18,16 @@ namespace Mink_Player
         // Instance from NotifyIcon
         static public NotifyIcon MyNotify = new NotifyIcon();
 
-        // imstance from Contextmenu Windows Form.
+        // Imstance from Contextmenu Windows Form.
         static ContextMenu mContextMenu = new ContextMenu();
 
         // Instance from Notification Windows.
         public Notification Notification;
 
-        // instance from File Dialog for open file to add to list.
+        // Instance from File Dialog for open file to add to list.
         static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog();
 
+        // Instance from MainDashboard windows.
         static MainDashboard MainDashboard = new MainDashboard();
 
         #endregion
@@ -43,7 +45,7 @@ namespace Mink_Player
 
             TrayMaker();
 
-            MainDashboard.Show();
+            //MainDashboard.Show();
 
             // Run application 
             MyApp.Run();
@@ -74,7 +76,7 @@ namespace Mink_Player
 
         static void TrayMaker()
         {
-            MyNotify.Icon = Properties.Resources.Tray_Empty;
+            MyNotify.Icon = Properties.Resources.Tray_Play;
             MyNotify.Visible = true;
 
             ContexSetup();

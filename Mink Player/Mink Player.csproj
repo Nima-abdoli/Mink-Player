@@ -126,5 +126,8 @@
   <ItemGroup>
     <Resource Include="Resources\Icon\Tray\Tray Empty.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Background\Cassette.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
