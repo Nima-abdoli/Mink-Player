@@ -9,6 +9,7 @@ namespace Mink_Player_Core
 {
     class StartUp
     {
+
         #region Public Property
 
         // Make instance from wpf application 
@@ -40,8 +41,6 @@ namespace Mink_Player_Core
         {
 
             TrayMaker();
-
-            //MainDashboard.Show();
 
             // Run application 
             MyApp.Run();
@@ -84,7 +83,7 @@ namespace Mink_Player_Core
 
         private static void NotificationItem_Click(object sender, EventArgs e)
         {
-            new Notification().Show();
+            new Notification(OpenFileDiag).Show();
         }
 
         private static void ShowItem_Click(object sender, EventArgs e)

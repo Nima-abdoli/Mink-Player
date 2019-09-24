@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Microsoft.Win32;
+using TagLib;
+
 namespace Mink_Player_Core
 {
     /// <summary>
@@ -17,6 +21,21 @@ namespace Mink_Player_Core
     /// </summary>
     public partial class Notification : Window
     {
+        string FileToshow;
+
+        TagLib.File tFile;
+
+
+        public Notification(OpenFileDialog openFile)
+        {
+            InitializeComponent();
+
+            //Set startup location of notification windows
+            Left = SystemParameters.WorkArea.Width - (Width + 15);
+            Top = SystemParameters.WorkArea.Height - (Height + 15);
+            FileToshow = openFile.FileName;
+        }
+
         public Notification()
         {
             InitializeComponent();
@@ -28,7 +47,11 @@ namespace Mink_Player_Core
 
         private void Window_Activated(object sender, EventArgs e)
         {
-
+            tFile = TagLib.File.Create(FileToshow);
+            NameTrack_TxtBl.Text = tFile.Tag.Title;
+            NameArtist_TxtBl.Text = tFile.Tag.Artists[0];
+            BackRound_Image.Source = ImageTaker();
+            Cover_Image.Background = new ImageBrush(ImageTaker());
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -37,6 +60,24 @@ namespace Mink_Player_Core
             {
                 this.Close();
             }
+        }
+
+        BitmapImage ImageTaker()
+        {
+            // Load you image data in MemoryStream
+            TagLib.IPicture pic = tFile.Tag.Pictures[0];
+            MemoryStream ms = new MemoryStream(pic.Data.Data);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            // ImageSource for System.Windows.Controls.Image
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.StreamSource = ms;
+            bitmap.EndInit();
+
+            //ms.Dispose();
+
+            return bitmap;
         }
     }
 }
