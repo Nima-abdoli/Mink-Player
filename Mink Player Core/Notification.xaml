@@ -35,7 +35,7 @@
 
             <Grid>
 
-                <Image x:Name="BackRound_Image" Source="/Resources/Image/Cover/Cassette.png" Stretch="UniformToFill" >
+                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="Resources/Image/Cover/Cassette.png" >
                     <Image.Effect>
                         <BlurEffect Radius="15" />
                     </Image.Effect>
@@ -75,7 +75,7 @@
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
             </Border.Effect>
             <Border.Background>
-                <ImageBrush ImageSource="/Resources/Image/Cover/Cassette.png" Stretch="Uniform"/>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/Image/Cover/Cassette.png"/>
             </Border.Background>
         </Border>
 

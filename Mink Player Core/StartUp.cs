@@ -25,7 +25,7 @@ namespace Mink_Player_Core
         static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog();
 
         // Instance from Notification Windows.
-        public Notification Notification;
+        //public Notification Notification;
 
         #endregion
 
@@ -83,7 +83,7 @@ namespace Mink_Player_Core
 
         private static void NotificationItem_Click(object sender, EventArgs e)
         {
-            new Notification(OpenFileDiag).Show();
+            new Notification(OpenFileDiag.FileName).Show();
         }
 
         private static void ShowItem_Click(object sender, EventArgs e)

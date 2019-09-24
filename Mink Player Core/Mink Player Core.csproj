@@ -44,7 +44,9 @@
     <Resource Include="Resources\Icon\Tray\Tray Empty.ico" />
     <Resource Include="Resources\Icon\Tray\Tray Play.ico" />
     <Resource Include="Resources\Icon\Tray\Tray Puase.ico" />
-    <Resource Include="Resources\Image\Cover\Cassette.png" />
+    <Resource Include="Resources\Image\Cover\Cassette.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
