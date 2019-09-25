@@ -13,7 +13,6 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
 using Microsoft.Win32;
 using TagLib;
 
@@ -92,7 +91,8 @@ namespace Mink_Player_Core
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                this.Close();
+                FadeOutAnimation();
+                //this.Close();
             }
         }// End of Windows_MouseDown
         #endregion
@@ -171,12 +171,10 @@ namespace Mink_Player_Core
         #endregion
 
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            
-        }
-
-
+        #region Fade In Animation Method
+        /// <summary>
+        /// Fade In Animation Method. Fade in windows when started.
+        /// </summary>
         void FadeInAnimation()
         {
             DoubleAnimation da = new DoubleAnimation();
@@ -185,8 +183,27 @@ namespace Mink_Player_Core
             da.Duration = TimeSpan.FromMilliseconds(900);
 
             this.BeginAnimation(OpacityProperty, da);
-        }
 
-        
+        }// end of FadeInAnimation()
+        #endregion
+
+
+        #region Fade Out Animation Method
+        /// <summary>
+        /// Fade In Animation Method. Fade in windows when started.
+        /// </summary>
+        void FadeOutAnimation()
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.From = 1;
+            da.To = 0;
+            da.Duration = TimeSpan.FromMilliseconds(900);
+
+            this.BeginAnimation(OpacityProperty, da);
+
+        }// end of FadeOutAnimation()
+        #endregion
+
+
     } // End of Notification Class
 } //End of NameSpcae
