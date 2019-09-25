@@ -91,8 +91,7 @@ namespace Mink_Player_Core
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                FadeOutAnimation();
-                //this.Close();
+                this.Close();
             }
         }// End of Windows_MouseDown
         #endregion
