@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
 using Microsoft.Win32;
 using TagLib;
 
@@ -41,10 +41,17 @@ namespace Mink_Player_Core
         // This Variable will 
         TagLib.File FileTag;
 
+        // Dispatcher Timer 
+        DispatcherTimer DTimer = new DispatcherTimer();
+
+        // Hold Time That Windows will be open
+        int TimeToStay;
+
         #endregion
 
 
         #region Constructors for Notification Windows
+
         public Notification(string FilePath)
         {
             InitializeComponent();
@@ -75,7 +82,9 @@ namespace Mink_Player_Core
         {
             FadeInAnimation();
             FileTag = TagLib.File.Create(TrackPath);
+            TimeToStay = 8;
 
+            Timer();
             CoverExtractor();
             ArtistExtractor();
             TitleExtractor();
@@ -83,7 +92,7 @@ namespace Mink_Player_Core
         #endregion
 
 
-        #region Notification window MouseDown Event
+        #region MouseDown Event Notification window 
         /// <summary>
         /// Mouse Down event for Notification Windows.
         /// </summary>
@@ -91,7 +100,8 @@ namespace Mink_Player_Core
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                this.Close();
+                // Set timetostay equel to 2, so Timer Handle closing Animation and closing 
+                TimeToStay = 2;
             }
         }// End of Windows_MouseDown
         #endregion
@@ -202,6 +212,29 @@ namespace Mink_Player_Core
 
         }// end of FadeOutAnimation()
         #endregion
+
+
+        void Timer()
+        {
+            DTimer.Interval = TimeSpan.FromSeconds(1);
+            DTimer.IsEnabled = true;
+            DTimer.Tick += DTimer_Tick;
+            DTimer.Start();
+        }
+
+        private void DTimer_Tick(object sender, EventArgs e)
+        {
+            TimeToStay--;
+
+            if (TimeToStay == 1)
+            {
+                FadeOutAnimation();
+            }
+            else if (TimeToStay == 0)
+            {
+                this.Close();
+            }
+        }
 
 
     } // End of Notification Class
