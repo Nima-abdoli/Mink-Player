@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -67,20 +68,19 @@ namespace Mink_Player_Core
         #endregion
 
 
-        #region Notification Windows Activated Event
+        #region Load Event of Notification Window 
         /// <summary>
-        /// Notification Windows Activated Event
+        /// Load Event of Notification Window 
         /// </summary>
-        private void Window_Activated(object sender, EventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            FadeInAnimation();
             FileTag = TagLib.File.Create(TrackPath);
-            
-                
+
             CoverExtractor();
             ArtistExtractor();
             TitleExtractor();
-            
-        }// End of Window Activated Event
+        }//End of Window Loaded Event
         #endregion
 
 
@@ -153,7 +153,7 @@ namespace Mink_Player_Core
         #endregion
 
 
-        #region
+        #region Title Extractor Method
         /// <summary>
         /// Extract Title of Music From File
         /// </summary>
@@ -171,5 +171,22 @@ namespace Mink_Player_Core
         #endregion
 
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+        }
+
+
+        void FadeInAnimation()
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.From = 0;
+            da.To = 1;
+            da.Duration = TimeSpan.FromMilliseconds(900);
+
+            this.BeginAnimation(OpacityProperty, da);
+        }
+
+        
     } // End of Notification Class
 } //End of NameSpcae
