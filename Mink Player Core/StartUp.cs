@@ -58,7 +58,7 @@ namespace Mink_Player_Core
             MenuItem ExitItem = new MenuItem("Exit");
             ExitItem.Click += ExitItem_Click;
 
-            MenuItem ShowItem = new MenuItem("Show");
+            MenuItem ShowItem = new MenuItem("Open");
             ShowItem.Click += ShowItem_Click;
 
             MenuItem NotificationItem = new MenuItem("Show Notification");
