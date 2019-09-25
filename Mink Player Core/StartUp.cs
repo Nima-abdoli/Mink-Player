@@ -27,6 +27,9 @@ namespace Mink_Player_Core
         // Instance from Notification Windows.
         //public Notification Notification;
 
+        // Hold Time Notification Will Have To be Open.
+        static int NotificationTime = 10;
+
         #endregion
 
 
@@ -83,7 +86,7 @@ namespace Mink_Player_Core
 
         private static void NotificationItem_Click(object sender, EventArgs e)
         {
-            new Notification(OpenFileDiag.FileName).Show();
+            new Notification(OpenFileDiag.FileName, NotificationTime).Show();
         }
 
         private static void ShowItem_Click(object sender, EventArgs e)

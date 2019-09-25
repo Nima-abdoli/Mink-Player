@@ -52,7 +52,7 @@ namespace Mink_Player_Core
 
         #region Constructors for Notification Windows
 
-        public Notification(string FilePath)
+        public Notification(string FilePath,int TimeLeft)
         {
             InitializeComponent();
 
@@ -60,7 +60,9 @@ namespace Mink_Player_Core
             Left = SystemParameters.WorkArea.Width - (Width + 15);
             Top = SystemParameters.WorkArea.Height - (Height + 15);
 
-            TrackPath = FilePath;
+            TrackPath = FilePath; // Path to Music file.
+
+            TimeToStay = TimeLeft; // Time Left To This Windows Closing.
         }
 
         public Notification()
@@ -80,14 +82,20 @@ namespace Mink_Player_Core
         /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            FadeInAnimation();
-            FileTag = TagLib.File.Create(TrackPath);
-            TimeToStay = 8;
+            FadeInAnimation(); // Call to This Window Open With Animation To be Smother.
 
-            Timer();
-            CoverExtractor();
-            ArtistExtractor();
-            TitleExtractor();
+            FileTag = TagLib.File.Create(TrackPath); // Set and Make tag From File path that give to it. 
+
+            //TimeToStay = 8; // Time Left To This Windows Closing.(Better to Handle from Constructor)
+
+            Timer(); // Call This Method To Handle Time Left For Closing this Window.
+
+            CoverExtractor(); // Call To Extract Cover From File.
+
+            ArtistExtractor(); // Call To Extact Artist Name from File.
+
+            TitleExtractor(); // Call To Extract title of Song From File.
+
         }//End of Window Loaded Event
         #endregion
 
@@ -214,27 +222,44 @@ namespace Mink_Player_Core
         #endregion
 
 
+        #region Timer Method
+        /// <summary>
+        /// Timer method Will handle Time left to Close Notification Windows. 
+        /// </summary>
         void Timer()
         {
+
             DTimer.Interval = TimeSpan.FromSeconds(1);
             DTimer.IsEnabled = true;
             DTimer.Tick += DTimer_Tick;
             DTimer.Start();
-        }
 
+        }// End of Timer Method
+        #endregion
+
+
+        #region Tick Event For DTimer
+        /// <summary>
+        /// Tick Event For DTimer. Event fire Every 1 Second
+        /// </summary>
         private void DTimer_Tick(object sender, EventArgs e)
         {
+            // Decrease this variable with each tick(1 Second) to show how much time left for Closing 
             TimeToStay--;
 
+            // This Check So there will be Time For Animation to Complete.
             if (TimeToStay == 1)
             {
                 FadeOutAnimation();
             }
+            // Check to Close App in Certain Time.
             else if (TimeToStay == 0)
             {
                 this.Close();
             }
-        }
+
+        }// End of Dtimer_Tick Event
+        #endregion
 
 
     } // End of Notification Class
