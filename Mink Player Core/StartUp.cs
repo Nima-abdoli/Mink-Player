@@ -3,6 +3,7 @@ using System.Windows;
 using Microsoft.Win32;
 using System.Windows.Media;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 
 namespace Mink_Player_Core
@@ -22,7 +23,10 @@ namespace Mink_Player_Core
         static ContextMenu mContextMenu = new ContextMenu();
 
         // Instance from File Dialog for open file to add to list.
-        static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog();
+        static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
+        {
+            Multiselect = true
+        };
 
         // Instance from Notification Windows.
         //public Notification Notification;
@@ -30,11 +34,15 @@ namespace Mink_Player_Core
         // Hold Time Notification Will Have To be Open.
         static int NotificationTime = 10;
 
+        // Hold List of All File user Choose to Play
+        static List<MusicPath> FileList = new List<MusicPath>();
+
+        static string s;
+
         #endregion
 
 
         #region Entry Point
-
         /// <summary>
         /// Entry point of app
         /// </summary>
@@ -42,17 +50,19 @@ namespace Mink_Player_Core
         [STAThread]
         static void Main(string[] args)
         {
-
+            // Call TrayMaker Method To setup TrayIcon.
             TrayMaker();
+
+            s = "";
 
             // Run application 
             MyApp.Run();
 
         }//End of Main
-
         #endregion
 
 
+        #region Contex Menu Setup Method
         /// <summary>
         /// Setup up Context menu item
         /// </summary>
@@ -61,42 +71,81 @@ namespace Mink_Player_Core
             MenuItem ExitItem = new MenuItem("Exit");
             ExitItem.Click += ExitItem_Click;
 
-            MenuItem ShowItem = new MenuItem("Open");
-            ShowItem.Click += ShowItem_Click;
+            MenuItem OpenItem = new MenuItem("Open");
+            OpenItem.Click += OpenItem_Click;
 
             MenuItem NotificationItem = new MenuItem("Show Notification");
             NotificationItem.Click += NotificationItem_Click;
 
-            mContextMenu.MenuItems.Add(ShowItem);
+            mContextMenu.MenuItems.Add(OpenItem);
             mContextMenu.MenuItems.Add(NotificationItem);
             mContextMenu.MenuItems.Add(ExitItem);
-        }
+        }// End OF ContexSetup
+        #endregion
 
 
+        #region Tray Maker Method
+        /// <summary>
+        /// This Function Will Setup TrayIcon.
+        /// </summary>
         static void TrayMaker()
         {
             MyNotify.Icon = Properties.Resources.Tray_Play;
             MyNotify.Visible = true;
 
+            // Call To Setup Contex Menu For TrayIcon.
             ContexSetup();
 
             MyNotify.ContextMenu = mContextMenu;
-        }
+        }// End Of TrayMaker
+        #endregion
 
 
+        #region NotificationItem Click Event
+        // this Will Be Deleted !!!!!!!!
         private static void NotificationItem_Click(object sender, EventArgs e)
         {
             new Notification(OpenFileDiag.FileName, NotificationTime).Show();
         }
+        #endregion
 
-        private static void ShowItem_Click(object sender, EventArgs e)
+
+        #region OpenItem Click Event
+        /// <summary>
+        /// click Event For OpenItem In ContextMenu
+        /// </summary>
+        private static void OpenItem_Click(object sender, EventArgs e)
         {
-            OpenFileDiag.ShowDialog();
-        }
+            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
 
+            AddToList();
+            
+        }// End of OpenItem_Click Event
+        #endregion
+
+
+        #region ExitItem click Event
+        /// <summary>
+        /// click Event For ExitItem In ContextMenu
+        /// </summary>
         private static void ExitItem_Click(object sender, EventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown(); // Close(Shutdown) This(MyApp) application
+        }// End of ExitItem Event
+        #endregion
+
+
+        static void AddToList()
+        {
+            
+
+            foreach (string mPath in OpenFileDiag.FileNames)
+            {
+                FileList.Add(new MusicPath() { Path = mPath });
+                s += mPath + "\n";
+            }
+
+            System.Windows.MessageBox.Show(s);
         }
     }
 }
