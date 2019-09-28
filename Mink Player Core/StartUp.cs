@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using Microsoft.Win32;
 using System.Windows.Media;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 
 namespace Mink_Player_Core
@@ -28,9 +28,6 @@ namespace Mink_Player_Core
             Multiselect = true
         };
 
-        // Instance from Notification Windows.
-        //public Notification Notification;
-
         // Hold Time Notification Will Have To be Open.
         static int NotificationTime = 10;
 
@@ -38,6 +35,8 @@ namespace Mink_Player_Core
         static List<MusicPath> FileList = new List<MusicPath>();
 
         static string s;
+
+        static Dashboard Dashboard = new Dashboard();
 
         #endregion
 
@@ -54,6 +53,8 @@ namespace Mink_Player_Core
             TrayMaker();
 
             s = "";
+
+            Dashboard.Hide();
 
             // Run application 
             MyApp.Run();
@@ -138,14 +139,18 @@ namespace Mink_Player_Core
         static void AddToList()
         {
             
-
             foreach (string mPath in OpenFileDiag.FileNames)
             {
                 FileList.Add(new MusicPath() { Path = mPath });
                 s += mPath + "\n";
             }
 
-            System.Windows.MessageBox.Show(s);
+            //System.Windows.MessageBox.Show(s);
+        }
+
+        static void PlayMusic()
+        {
+
         }
     }
 }
