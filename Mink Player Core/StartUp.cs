@@ -34,14 +34,17 @@ namespace Mink_Player_Core
         // Hold List of All File user Choose to Play
         static List<MusicPath> FileList = new List<MusicPath>();
 
-        static string s;
-
+        // Create static instance from Dashboard windows.
         static Dashboard Dashboard = new Dashboard();
+
+        // Create static instance from Mediaplayer element.
+        static MediaPlayer Player = new MediaPlayer();
+        
 
         #endregion
 
 
-        #region Entry Point
+        #region Entry Point Main Function
         /// <summary>
         /// Entry point of app
         /// </summary>
@@ -49,10 +52,11 @@ namespace Mink_Player_Core
         [STAThread]
         static void Main(string[] args)
         {
+            MyApp.Exit += MyApp_Exit;
+
             // Call TrayMaker Method To setup TrayIcon.
             TrayMaker();
 
-            s = "";
 
             Dashboard.Hide();
 
@@ -63,25 +67,72 @@ namespace Mink_Player_Core
         #endregion
 
 
+        #region Application Exit Event.
+        /// <summary>
+        /// this event will fire when app will be exited.
+        /// </summary>
+        private static void MyApp_Exit(object sender, ExitEventArgs e)
+        {
+            MyNotify.Dispose(); // Will Dispose trayIcon so icon will remove from tray menu.
+
+        }// End of MyApp_Exit
+        #endregion
+
+
         #region Contex Menu Setup Method
         /// <summary>
         /// Setup up Context menu item
         /// </summary>
         static void ContexSetup()
         {
-            MenuItem ExitItem = new MenuItem("Exit");
-            ExitItem.Click += ExitItem_Click;
+            // Create Menu item for Dashboard
+            MenuItem DashboardItem = new MenuItem("Dashboard");
+            DashboardItem.Click += DashboardItem_Click;
 
-            MenuItem OpenItem = new MenuItem("Open");
-            OpenItem.Click += OpenItem_Click;
+            // Create menu Item for Select Music
+            MenuItem SelectMItem = new MenuItem("Select Music");
+            SelectMItem.Click += SelectMItem_Click;
 
+            // Create Menu item for Next Music
+            MenuItem NextMItem = new MenuItem("Next Music");
+            NextMItem.Click += NextMItem_Click;
+
+            //TO Delete
             MenuItem NotificationItem = new MenuItem("Show Notification");
             NotificationItem.Click += NotificationItem_Click;
 
-            mContextMenu.MenuItems.Add(OpenItem);
+            // Create menu Item for Exit app
+            MenuItem ExitItem = new MenuItem("Exit");
+            ExitItem.Click += ExitItem_Click;
+
+            // created Menu Items added to Contextmenu 
+            mContextMenu.MenuItems.Add(DashboardItem);
+            mContextMenu.MenuItems.Add(SelectMItem);
+            mContextMenu.MenuItems.Add(NextMItem);
             mContextMenu.MenuItems.Add(NotificationItem);
             mContextMenu.MenuItems.Add(ExitItem);
+            
         }// End OF ContexSetup
+        #endregion
+
+
+        #region 
+        private static void NextMItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+        #endregion
+
+
+        #region DashBoard Item Click Event
+        /// <summary>
+        /// Click Event for Dashboard item.
+        /// </summary>
+        private static void DashboardItem_Click(object sender, EventArgs e)
+        {
+            Dashboard.Show(); // Show DashBoard Windows.
+
+        }// End of DashboardItem_Click
         #endregion
 
 
@@ -111,17 +162,17 @@ namespace Mink_Player_Core
         #endregion
 
 
-        #region OpenItem Click Event
+        #region Select Music Click Event
         /// <summary>
-        /// click Event For OpenItem In ContextMenu
+        /// click Event For SelectMuic Item In ContextMenu
         /// </summary>
-        private static void OpenItem_Click(object sender, EventArgs e)
+        private static void SelectMItem_Click(object sender, EventArgs e)
         {
             OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
 
             AddToList();
-            
-        }// End of OpenItem_Click Event
+
+        }// End of SelectMItem_Click Event
         #endregion
 
 
@@ -142,10 +193,9 @@ namespace Mink_Player_Core
             foreach (string mPath in OpenFileDiag.FileNames)
             {
                 FileList.Add(new MusicPath() { Path = mPath });
-                s += mPath + "\n";
             }
 
-            //System.Windows.MessageBox.Show(s);
+
         }
 
         static void PlayMusic()
