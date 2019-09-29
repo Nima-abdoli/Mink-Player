@@ -19,7 +19,7 @@ namespace Mink_Player_Core
         // Instance from NotifyIcon
         static public NotifyIcon MyNotify = new NotifyIcon();
 
-        // Imstance from Contextmenu Windows Form.
+        // Instance from Contextmenu Windows Form.
         static ContextMenu mContextMenu = new ContextMenu();
 
         // Instance from File Dialog for open file to add to list.
@@ -37,7 +37,7 @@ namespace Mink_Player_Core
         // Create static instance from Dashboard windows.
         static Dashboard Dashboard = new Dashboard();
 
-        // Create static instance from Mediaplayer element.
+        // Create static instance from Media player element.
         static MediaPlayer Player = new MediaPlayer();
         
 
@@ -79,7 +79,7 @@ namespace Mink_Player_Core
         #endregion
 
 
-        #region Contex Menu Setup Method
+        #region Context Menu Setup Method
         /// <summary>
         /// Setup up Context menu item
         /// </summary>
@@ -145,7 +145,7 @@ namespace Mink_Player_Core
             MyNotify.Icon = Properties.Resources.Tray_Play;
             MyNotify.Visible = true;
 
-            // Call To Setup Contex Menu For TrayIcon.
+            // Call To Setup Context Menu For TrayIcon.
             ContexSetup();
 
             MyNotify.ContextMenu = mContextMenu;
