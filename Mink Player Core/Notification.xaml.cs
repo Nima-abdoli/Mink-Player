@@ -108,8 +108,11 @@ namespace Mink_Player_Core
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                // Set timetostay equel to 2, so Timer Handle closing Animation and closing 
-                TimeToStay = 2;
+                // Check if notification are closing don't set time again
+                if (TimeToStay >= 2)
+                {
+                    TimeToStay = 2; // Set timetostay equel to 2, so Timer Handle closing Animation and closing 
+                }
             }
         }// End of Windows_MouseDown
         #endregion
