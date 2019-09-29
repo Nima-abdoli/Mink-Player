@@ -38,7 +38,9 @@ namespace Mink_Player_Core
         static Dashboard Dashboard = new Dashboard();
 
         // Create static instance from Media player element.
-        static MediaPlayer Player = new MediaPlayer();
+        static MediaPlayer MPlayer = new MediaPlayer();
+
+        static int SelectedMusic { get; set; } 
         
 
         #endregion
@@ -57,7 +59,9 @@ namespace Mink_Player_Core
             // Call TrayMaker Method To setup TrayIcon.
             TrayMaker();
 
+            MPlayerSetup();
 
+            // Hide dashboard so app wont close.
             Dashboard.Hide();
 
             // Run application 
@@ -195,12 +199,29 @@ namespace Mink_Player_Core
                 FileList.Add(new MusicPath() { Path = mPath });
             }
 
+            SelectedMusic = 0;
+
+            PlayMusic();
 
         }
 
         static void PlayMusic()
         {
+            MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
+            MPlayer.Play();
+            new Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
+        }
 
+        static void MPlayerSetup()
+        {
+            MPlayer.MediaEnded += MPlayer_MediaEnded;
+            
+        }
+
+        static private void MPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            SelectedMusic++;
+            PlayMusic();
         }
     }
 }
