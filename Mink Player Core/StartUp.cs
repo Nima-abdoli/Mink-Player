@@ -215,7 +215,7 @@ namespace Mink_Player_Core
         static void MPlayerSetup()
         {
             MPlayer.MediaEnded += MPlayer_MediaEnded;
-            
+            MPlayer.Volume = 100;
         }
 
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
