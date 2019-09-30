@@ -304,5 +304,5 @@ namespace Mink_Player_Core
         #endregion
 
 
-    }
-}
+    }// End of StartUp Class
+}// End of Mink_Player_Core NameSpace

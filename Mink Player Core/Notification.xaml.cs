@@ -275,10 +275,15 @@ namespace Mink_Player_Core
         }// End of Btn1_Click
         #endregion
 
+        #region Btn2 Click Event
+        /// <summary>
+        /// 
+        /// </summary>
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        }// End Of Btn2_click event
+        #endregion
 
         #region Btn3 Click Event
         /// <summary>
@@ -293,4 +298,4 @@ namespace Mink_Player_Core
 
         
     } // End of Notification Class
-} //End of NameSpcae
+} //End of Mink_Player_Core NameSpcae
