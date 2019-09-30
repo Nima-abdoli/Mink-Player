@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using Microsoft.Win32;
@@ -40,11 +40,13 @@ namespace Mink_Player_Core
         // Create static instance from Media player element.
         static MediaPlayer MPlayer = new MediaPlayer();
 
-        static int SelectedMusic { get; set; } 
+        // Hold the list index of Selected File.
+        static int SelectedMusic { get; set; }
+
+        // Hold the status of Media Player.(Play/Pause)
+        static public bool PlayerStatus { get; set; }
         
-
         #endregion
-
 
         #region Entry Point Main Function
         /// <summary>
@@ -54,22 +56,18 @@ namespace Mink_Player_Core
         [STAThread]
         static void Main(string[] args)
         {
-            MyApp.Exit += MyApp_Exit;
+            MyApp.Exit += MyApp_Exit; // Exit event of App.
 
-            // Call TrayMaker Method To setup TrayIcon.
-            TrayMaker();
+            TrayMaker(); // Call TrayMaker Method To setup TrayIcon.
 
-            MPlayerSetup();
+            MPlayerSetup(); // setup property of media player.
 
-            // Hide dashboard so app wont close.
-            Dashboard.Hide();
+            Dashboard.Hide(); // Hide dashboard so app wont close.
 
-            // Run application 
-            MyApp.Run();
+            MyApp.Run(); // Run Application 
 
         }//End of Main
         #endregion
-
 
         #region Application Exit Event.
         /// <summary>
@@ -81,7 +79,6 @@ namespace Mink_Player_Core
 
         }// End of MyApp_Exit
         #endregion
-
 
         #region Context Menu Setup Method
         /// <summary>
@@ -114,14 +111,13 @@ namespace Mink_Player_Core
         }// End OF ContexSetup
         #endregion
 
-
-        #region 
+        #region NextItem Click Event
+        //To delete : this function/event
         private static void NextMItem_Click(object sender, EventArgs e)
         {
-            
+            NextSong();
         }
         #endregion
-
 
         #region DashBoard Item Click Event
         /// <summary>
@@ -134,15 +130,15 @@ namespace Mink_Player_Core
         }// End of DashboardItem_Click
         #endregion
 
-
         #region Tray Maker Method
         /// <summary>
         /// This Function Will Setup TrayIcon.
         /// </summary>
         static void TrayMaker()
         {
-            MyNotify.Icon = Properties.Resources.Tray_Play;
+            MyNotify.Icon = Properties.Resources.Tray_Empty;
             MyNotify.Visible = true;
+            MyNotify.MouseClick += MyNotify_MouseClick;
 
             // Call To Setup Context Menu For TrayIcon.
             ContexSetup();
@@ -151,15 +147,19 @@ namespace Mink_Player_Core
         }// End Of TrayMaker
         #endregion
 
-
-        #region NotificationItem Click Event
-        // this Will Be Deleted !!!!!!!!
-        private static void NotificationItem_Click(object sender, EventArgs e)
+        #region MyNotify MouseClick Event
+        /// <summary>
+        /// Mouse Click Event for MyNotify
+        /// </summary>
+        private static void MyNotify_MouseClick(object sender, MouseEventArgs e)
         {
-            new Notification(OpenFileDiag.FileName, NotificationTime).Show();
+            // Check to be sure only get left clicks
+            if (e.Button == MouseButtons.Left && OpenFileDiag.FileName != "")
+            {
+                new Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
+            }
         }
         #endregion
-
 
         #region Select Music Click Event
         /// <summary>
@@ -169,11 +169,13 @@ namespace Mink_Player_Core
         {
             OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
 
-            AddToList();
+            if (OpenFileDiag.FileName != "")
+            {
+                AddToList();
+            }
 
         }// End of SelectMItem_Click Event
         #endregion
-
 
         #region ExitItem click Event
         /// <summary>
@@ -185,20 +187,29 @@ namespace Mink_Player_Core
         }// End of ExitItem Event
         #endregion
 
-
+        #region Add To List Method
+        /// <summary>
+        /// Add user file to list 
+        /// </summary>
         static void AddToList()
         {
-            
+
+            // Check if list is empty set selected index to zero
+            if (FileList.Count == 0)
+            {
+                SelectedMusic = 0;  // set selected index in first time
+            }
+
+            // Adding user selected file to list 
             foreach (string mPath in OpenFileDiag.FileNames)
             {
                 FileList.Add(new MusicPath() { Path = mPath });
             }
 
-            SelectedMusic = 0;
-
             PlayMusic();
 
-        }
+        }// End of AddtoList
+        #endregion
 
         static void PlayMusic()
         {
@@ -207,16 +218,91 @@ namespace Mink_Player_Core
             new Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
         }
 
+        #region  Setup Media player
+        /// <summary>
+        /// This Function will Setup media player property. 
+        /// </summary>
         static void MPlayerSetup()
         {
-            MPlayer.MediaEnded += MPlayer_MediaEnded;
-            MPlayer.Volume = 100;
-        }
+            MPlayer.MediaEnded += MPlayer_MediaEnded; // Media Ended Event
 
+            MPlayer.Volume = 100; // set volume to max(100)
+
+        }// End of MPLayerSetup
+        #endregion
+
+        #region MediaEnded event for Media Player
+        /// <summary>
+        /// fire when media reach to it's end.
+        /// </summary>
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
         {
-            SelectedMusic++;
-            PlayMusic();
-        }
+            NextInList(); // call to set selected file to next in list
+            
+            PlayMusic(); // play selected file.
+
+        }// End of MPlayer_MediaEnded
+        #endregion
+
+        #region Next Song Function
+        /// <summary>
+        /// Play next song in the list
+        /// </summary>
+        static public void NextSong()
+        {
+            NextInList(); // call to set selected file to next in list
+
+            PlayMusic(); // play selected file.
+
+        } // End of NextSong Function
+        #endregion
+
+        #region Last Song Function
+        /// <summary>
+        /// Play last Song in List.
+        /// </summary>
+        static public void LastSong()
+        {
+            LastInList(); // call to set selected file to next in list
+
+            PlayMusic(); // play selected file.
+
+        } // end of LastSong 
+        #endregion
+
+        #region  Next in List Function
+        /// <summary>
+        /// Set the selected file to next in the list if it exist.
+        /// </summary>
+        static void NextInList()
+        {
+            // Check for list reach to end or not. if reach to end it will go to index 1 of list
+            if (SelectedMusic + 1 < FileList.Count) SelectedMusic++;
+
+            else SelectedMusic = 0;
+            
+        } // End of NextInList
+        #endregion
+
+        #region Last in List Function
+        /// <summary>
+        /// Set the selected file to last in list if it exist.
+        /// </summary>
+        static void LastInList()
+        {
+            // check if list reach to beginning or not. if reach to beginning of list it will set to end of the list.
+            if (SelectedMusic > 0)
+            {
+                SelectedMusic--;
+            }
+            else
+            {
+                SelectedMusic = FileList.Count - 1;
+            }
+
+        } // end of LastInLIst
+        #endregion
+
+
     }
 }

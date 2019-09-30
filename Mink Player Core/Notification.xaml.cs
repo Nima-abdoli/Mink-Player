@@ -264,6 +264,33 @@ namespace Mink_Player_Core
         }// End of Dtimer_Tick Event
         #endregion
 
+        #region Btn1 Click Event 
+        /// <summary>
+        /// click event of Btn1
+        /// </summary>
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            StartUp.LastSong(); // call this function to play Previous song
 
+        }// End of Btn1_Click
+        #endregion
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #region Btn3 Click Event
+        /// <summary>
+        /// Click event of Btn3
+        /// </summary>
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            StartUp.NextSong(); //call this function to play next song
+
+        }// End of Btn3_Click
+        #endregion
+
+        
     } // End of Notification Class
 } //End of NameSpcae
