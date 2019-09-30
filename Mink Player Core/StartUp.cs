@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using Microsoft.Win32;
@@ -101,10 +101,6 @@ namespace Mink_Player_Core
             MenuItem NextMItem = new MenuItem("Next Music");
             NextMItem.Click += NextMItem_Click;
 
-            //TO Delete
-            MenuItem NotificationItem = new MenuItem("Show Notification");
-            NotificationItem.Click += NotificationItem_Click;
-
             // Create menu Item for Exit app
             MenuItem ExitItem = new MenuItem("Exit");
             ExitItem.Click += ExitItem_Click;
@@ -113,7 +109,6 @@ namespace Mink_Player_Core
             mContextMenu.MenuItems.Add(DashboardItem);
             mContextMenu.MenuItems.Add(SelectMItem);
             mContextMenu.MenuItems.Add(NextMItem);
-            mContextMenu.MenuItems.Add(NotificationItem);
             mContextMenu.MenuItems.Add(ExitItem);
             
         }// End OF ContexSetup
