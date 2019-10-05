@@ -49,7 +49,6 @@ namespace Mink_Player_Core
 
         #endregion
 
-
         #region Constructors for Notification Windows
 
         public Notification(string FilePath,int TimeLeft)
@@ -75,7 +74,6 @@ namespace Mink_Player_Core
         }
         #endregion
 
-
         #region Load Event of Notification Window 
         /// <summary>
         /// Load Event of Notification Window 
@@ -99,7 +97,6 @@ namespace Mink_Player_Core
         }//End of Window Loaded Event
         #endregion
 
-
         #region MouseDown Event Notification window 
         /// <summary>
         /// Mouse Down event for Notification Windows.
@@ -116,7 +113,6 @@ namespace Mink_Player_Core
             }
         }// End of Windows_MouseDown
         #endregion
-
 
         #region File Cover Extractor Method
         /// <summary>
@@ -154,7 +150,6 @@ namespace Mink_Player_Core
         }// End of CoverExtractor Method
         #endregion
 
-
         #region Artist Name Extractor Method
         /// <summary>
         /// Extract Name of Artist from file.
@@ -171,7 +166,6 @@ namespace Mink_Player_Core
             }
         } // End of ArtistExtractor Method
         #endregion
-
 
         #region Title Extractor Method
         /// <summary>
@@ -190,7 +184,6 @@ namespace Mink_Player_Core
         } // End of TitleExtractor Method
         #endregion
 
-
         #region Fade In Animation Method
         /// <summary>
         /// Fade In Animation Method. Fade in windows when started.
@@ -206,7 +199,6 @@ namespace Mink_Player_Core
 
         }// end of FadeInAnimation()
         #endregion
-
 
         #region Fade Out Animation Method
         /// <summary>
@@ -224,7 +216,6 @@ namespace Mink_Player_Core
         }// end of FadeOutAnimation()
         #endregion
 
-
         #region Timer Method
         /// <summary>
         /// Timer method Will handle Time left to Close Notification Windows. 
@@ -239,7 +230,6 @@ namespace Mink_Player_Core
 
         }// End of Timer Method
         #endregion
-
 
         #region Tick Event For DTimer
         /// <summary>
@@ -266,7 +256,7 @@ namespace Mink_Player_Core
 
         #region Btn1 Click Event 
         /// <summary>
-        /// click event of Btn1
+        /// click event of Btn1, Previous Button
         /// </summary>
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
@@ -277,17 +267,17 @@ namespace Mink_Player_Core
 
         #region Btn2 Click Event
         /// <summary>
-        /// 
+        /// Click event of Button 2. Play/Pause Button
         /// </summary>
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-
+            StartUp.PauseMusic();
         }// End Of Btn2_click event
         #endregion
 
         #region Btn3 Click Event
         /// <summary>
-        /// Click event of Btn3
+        /// Click event of Btn3, Next Button
         /// </summary>
         private void btn3_Click(object sender, RoutedEventArgs e)
         {

@@ -46,6 +46,7 @@ namespace Mink_Player_Core
         // Hold the status of Media Player.(Play/Pause)
         static public bool PlayerStatus { get; set; }
 
+        // Hold player State.
         static public PlayerState PlayerState = PlayerState.Empty;
 
         #endregion
@@ -96,6 +97,10 @@ namespace Mink_Player_Core
             MenuItem SelectMItem = new MenuItem("Select Music");
             SelectMItem.Click += SelectMItem_Click;
 
+            // Create menu Item For Pause Music
+            MenuItem PauseMItem = new MenuItem("Pause Music");
+            PauseMItem.Click += PauseMItem_Click;
+
             // Create Menu item for Next Music
             MenuItem NextMItem = new MenuItem("Next Music");
             NextMItem.Click += NextMItem_Click;
@@ -107,10 +112,23 @@ namespace Mink_Player_Core
             // created Menu Items added to Contextmenu 
             mContextMenu.MenuItems.Add(DashboardItem);
             mContextMenu.MenuItems.Add(SelectMItem);
+            mContextMenu.MenuItems.Add(PauseMItem);
             mContextMenu.MenuItems.Add(NextMItem);
             mContextMenu.MenuItems.Add(ExitItem);
             
         }// End OF ContexSetup
+
+        private static void PauseMItem_Click(object sender, EventArgs e)
+        {
+            if (PlayerState == PlayerState.Play)
+            {
+                PauseMusic();
+            }
+            else if (PlayerState == PlayerState.Pause)
+            {
+                PlayMusic();
+            }
+        }
         #endregion
 
         #region NextItem Click Event
@@ -197,7 +215,7 @@ namespace Mink_Player_Core
         {
 
             // Check if list is empty set selected index to zero
-            if (FileList.Count == 0)
+            if (PlayerState == PlayerState.Empty)
             {
                 SelectedMusic = 0;  // set selected index in first time
             }
@@ -208,17 +226,40 @@ namespace Mink_Player_Core
                 FileList.Add(new MusicPath() { Path = mPath });
             }
 
-            PlayMusic();
+            PlayMusic(); // play Music For the First time
             
         }// End of AddtoList
         #endregion
 
-        static void PlayMusic()
+        #region Play Music Function
+        /// <summary>
+        /// Play selected Music. 
+        /// </summary>
+        static public void PlayMusic()
         {
-            MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
-            MPlayer.Play();
-            new Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
-        }
+            if (PlayerState == PlayerState.Empty || PlayerState == PlayerState.Pause)
+            {
+                SetState(PlayerState.Play);
+                MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
+                MPlayer.Play();
+                new Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
+            }           
+        }// End of PlayMuic
+        #endregion
+
+        #region Pause Music Function 
+        /// <summary>
+        /// Pause Selected Music 
+        /// </summary>
+        static public void PauseMusic()
+        {
+            if (PlayerState == PlayerState.Play)
+            {
+                MPlayer.Pause(); // Pause Music
+                SetState(PlayerState.Pause);
+            }
+        }// End of PauseMuic
+        #endregion
 
         #region  Setup Media player
         /// <summary>
@@ -254,6 +295,8 @@ namespace Mink_Player_Core
         {
             NextInList(); // call to set selected file to next in list
 
+            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+
             PlayMusic(); // play selected file.
 
         } // End of NextSong Function
@@ -266,6 +309,8 @@ namespace Mink_Player_Core
         static public void LastSong()
         {
             LastInList(); // call to set selected file to next in list
+
+            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
             PlayMusic(); // play selected file.
 
@@ -305,6 +350,32 @@ namespace Mink_Player_Core
         } // end of LastInLIst
         #endregion
 
+        #region Set State Function
+        /// <summary>
+        /// Set state and tray icon of player.
+        /// </summary>
+        /// <param name="state"> get the state that player should be.</param>
+        static void SetState(PlayerState state)
+        {
+            PlayerState = state; // set player state
+
+            // set tray icon by player state.
+            switch (PlayerState)
+            {
+                case PlayerState.Play:
+                    MyNotify.Icon = Properties.Resources.Tray_Play;
+                    break;
+
+                case PlayerState.Pause:
+                    MyNotify.Icon = Properties.Resources.Tray_Puase;
+                    break;
+
+                case PlayerState.Empty:
+                    MyNotify.Icon = Properties.Resources.Tray_Empty;
+                    break;
+            }// end of switch
+        }// End of SetState Function
+        #endregion
 
     }// End of StartUp Class
 }// End of Mink_Player_Core NameSpace
