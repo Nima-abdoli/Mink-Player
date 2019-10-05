@@ -5,6 +5,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Mink_Player_Core</RootNamespace>
     <UseWPF>true</UseWPF>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Xmasta.pfx</AssemblyOriginatorKeyFile>
+    <PackageId>Mink Player</PackageId>
+    <Authors>Xmasta inc</Authors>
+    <Product>Mink Player</Product>
+    <Company>Xmasta inc</Company>
+    <Description>Simple Music Player that work in background</Description>
+    <AssemblyName>Mink Player</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
