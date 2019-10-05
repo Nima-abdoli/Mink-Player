@@ -4,7 +4,7 @@ using System.Windows;
 using Microsoft.Win32;
 using System.Windows.Media;
 using System.Windows.Forms;
-
+using Mink_Player_Core;
 
 namespace Mink_Player_Core
 {
@@ -45,7 +45,9 @@ namespace Mink_Player_Core
 
         // Hold the status of Media Player.(Play/Pause)
         static public bool PlayerStatus { get; set; }
-        
+
+        static public PlayerState PlayerState = PlayerState.Empty;
+
         #endregion
 
         #region Entry Point Main Function
