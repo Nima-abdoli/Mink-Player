@@ -121,6 +121,18 @@
   <data name="Cassette" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\image\cover\cassette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Mink_Cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\image\cover\mink cover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mTray_Empthy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtray_empthy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mTray_Pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtray-pause.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mTray_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtray-play.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tray_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icon\tray\tray empty.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

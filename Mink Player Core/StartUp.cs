@@ -156,7 +156,7 @@ namespace Mink_Player_Core
         /// </summary>
         static void TrayMaker()
         {
-            MyNotify.Icon = Properties.Resources.Tray_Empty;
+            MyNotify.Icon = Properties.Resources.mTray_Empthy;
             MyNotify.Visible = true;
             MyNotify.MouseClick += MyNotify_MouseClick;
 
@@ -363,15 +363,15 @@ namespace Mink_Player_Core
             switch (PlayerState)
             {
                 case PlayerState.Play:
-                    MyNotify.Icon = Properties.Resources.Tray_Play;
+                    MyNotify.Icon = Properties.Resources.mTray_Play;
                     break;
 
                 case PlayerState.Pause:
-                    MyNotify.Icon = Properties.Resources.Tray_Puase;
+                    MyNotify.Icon = Properties.Resources.mTray_Pause;
                     break;
 
                 case PlayerState.Empty:
-                    MyNotify.Icon = Properties.Resources.Tray_Empty;
+                    MyNotify.Icon = Properties.Resources.mTray_Empthy;
                     break;
             }// end of switch
         }// End of SetState Function

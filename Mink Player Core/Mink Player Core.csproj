@@ -16,9 +16,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icon\Tray\mTray-Pause.ico" />
+    <None Remove="Resources\Icon\Tray\mTray-Play.ico" />
+    <None Remove="Resources\Icon\Tray\mTray_Empthy.ico" />
+    <None Remove="Resources\Icon\Tray\mTray_Pause.png" />
+    <None Remove="Resources\Icon\Tray\mTray_Play.png" />
     <None Remove="Resources\Icon\Tray\Tray Empty.ico" />
     <None Remove="Resources\Icon\Tray\Tray Puase.ico" />
     <None Remove="Resources\Image\Cover\Cassette.png" />
+    <None Remove="Resources\Image\Cover\Mink Cover.png" />
     <None Remove="Resources\Tray Play.ico" />
   </ItemGroup>
 
@@ -49,12 +55,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icon\Tray\mTray-Pause.ico" />
+    <Resource Include="Resources\Icon\Tray\mTray-Play.ico" />
+    <Resource Include="Resources\Icon\Tray\mTray_Empthy.ico" />
     <Resource Include="Resources\Icon\Tray\Tray Empty.ico" />
     <Resource Include="Resources\Icon\Tray\Tray Play.ico" />
     <Resource Include="Resources\Icon\Tray\Tray Puase.ico" />
     <Resource Include="Resources\Image\Cover\Cassette.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Image\Cover\Mink Cover.png" />
   </ItemGroup>
 
 </Project>
