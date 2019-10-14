@@ -283,12 +283,22 @@ namespace Mink_Player_Core
         /// </summary>
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
         {
-            NextInList(); // call to set selected file to next in list
+            //Check if list reach to end don't go to start of list when media end
+            if (SelectedMusic + 1 < FileList.Count)
+            {
+                NextInList(); // call to set selected file to next in list
 
-            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+                SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            PlayMusic(); // play selected file.
+                PlayMusic(); // play selected file.
+            }
+            else
+            {
+                NextInList(); // select first music of list when list reach to end
 
+                SetState(PlayerState.Pause); // Set player state to Pause 
+            }
+           
         }// End of MPlayer_MediaEnded
         #endregion
 
