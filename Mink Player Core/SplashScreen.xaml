@@ -190,7 +190,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="AppImage" HorizontalAlignment="Center" 
-               Source="Resources/Image/Cover/Mink Cover.png" 
+               Source="/Resources/Image/Cover/Mink No Lips Small.png" 
                Width="100" Height="100" />
 
 
