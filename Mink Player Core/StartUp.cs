@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
@@ -47,6 +47,9 @@ namespace Mink_Player_Core
         // Hold player State.
         static public PlayerState PlayerState = PlayerState.Empty;
 
+        // Create instance from Splash Sccreen.
+        static SplashScreen SplashScreen = new SplashScreen();
+
         #endregion
 
         #region Entry Point Main Function
@@ -58,6 +61,8 @@ namespace Mink_Player_Core
         static void Main(string[] args)
         {
             MyApp.Exit += MyApp_Exit; // Exit event of App.
+
+            SplashScreen.Show(); // Show Splash Screen on app Start
 
             TrayMaker(); // Call TrayMaker Method To setup TrayIcon.
 
