@@ -90,7 +90,7 @@ namespace Mink_Player_Core
 
             CoverExtractor(); // Call To Extract Cover From File.
 
-            ArtistExtractor(); // Call To Extact Artist Name from File.
+            ArtistExtractor(); // Call To Extract Artist Name from File.
 
             TitleExtractor(); // Call To Extract title of Song From File.
 
@@ -108,7 +108,7 @@ namespace Mink_Player_Core
                 // Check if notification are closing don't set time again
                 if (TimeToStay >= 2)
                 {
-                    TimeToStay = 2; // Set timetostay equel to 2, so Timer Handle closing Animation and closing 
+                    TimeToStay = 2; // Set timetostay equal to 2, so Timer Handle closing Animation and closing 
                 }
             }
         }// End of Windows_MouseDown
@@ -140,7 +140,7 @@ namespace Mink_Player_Core
             }
             else
             {
-                // get defult Image From Application Resource
+                // get default Image From Application Resource
                 TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Image/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
             }
 
@@ -248,6 +248,7 @@ namespace Mink_Player_Core
             // Check to Close App in Certain Time.
             else if (TimeToStay == 0)
             {
+                GC.Collect();
                 this.Close();
             }
 
