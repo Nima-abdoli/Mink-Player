@@ -2,7 +2,6 @@
 {
     class MusicPath
     {
-
         public string Path { get; set; } // path property for MusicPAth Class
 
     }// End of MusicPath Class

@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using Microsoft.Win32;
-using System.Windows.Media;
 using System.Windows.Forms;
-using Mink_Player_Core;
+using System.Windows.Media;
 
 namespace Mink_Player_Core
 {
@@ -115,7 +113,7 @@ namespace Mink_Player_Core
             mContextMenu.MenuItems.Add(PauseMItem);
             mContextMenu.MenuItems.Add(NextMItem);
             mContextMenu.MenuItems.Add(ExitItem);
-            
+
         }// End OF ContexSetup
 
         private static void PauseMItem_Click(object sender, EventArgs e)
@@ -156,7 +154,7 @@ namespace Mink_Player_Core
         /// </summary>
         static void TrayMaker()
         {
-            MyNotify.Icon = Properties.Resources.mTray_Empthy;
+            MyNotify.Icon = Properties.Resources.mtrayEmpty;
             MyNotify.Visible = true;
             MyNotify.MouseClick += MyNotify_MouseClick;
 
@@ -227,7 +225,7 @@ namespace Mink_Player_Core
             }
 
             PlayMusic(); // play Music For the First time
-            
+
         }// End of AddtoList
         #endregion
 
@@ -243,7 +241,7 @@ namespace Mink_Player_Core
                 MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
                 MPlayer.Play();
                 new Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
-            }           
+            }
         }// End of PlayMuic
         #endregion
 
@@ -281,7 +279,9 @@ namespace Mink_Player_Core
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
         {
             NextInList(); // call to set selected file to next in list
-            
+
+            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+
             PlayMusic(); // play selected file.
 
         }// End of MPlayer_MediaEnded
@@ -327,7 +327,7 @@ namespace Mink_Player_Core
             if (SelectedMusic + 1 < FileList.Count) SelectedMusic++;
 
             else SelectedMusic = 0;
-            
+
         } // End of NextInList
         #endregion
 
@@ -363,15 +363,15 @@ namespace Mink_Player_Core
             switch (PlayerState)
             {
                 case PlayerState.Play:
-                    MyNotify.Icon = Properties.Resources.mTray_Play;
+                    MyNotify.Icon = Properties.Resources.mTrayPlay;
                     break;
 
                 case PlayerState.Pause:
-                    MyNotify.Icon = Properties.Resources.mTray_Pause;
+                    MyNotify.Icon = Properties.Resources.mTrayPause;
                     break;
 
                 case PlayerState.Empty:
-                    MyNotify.Icon = Properties.Resources.mTray_Empthy;
+                    MyNotify.Icon = Properties.Resources.mtrayEmpty;
                     break;
             }// end of switch
         }// End of SetState Function
