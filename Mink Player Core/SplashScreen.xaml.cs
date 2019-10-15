@@ -18,7 +18,7 @@ namespace Mink_Player_Core
     /// </summary>
     public partial class SplashScreen : Window
     {
-        int TimeLeft = 3;
+        int TimeLeft = 5;
 
         DispatcherTimer Timer = new DispatcherTimer()
         {
