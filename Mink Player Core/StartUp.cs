@@ -64,7 +64,7 @@ namespace Mink_Player_Core
 
             SplashScreen.Show(); // Show Splash Screen on app Start
 
-            TrayMaker(); // Call TrayMaker Method To setup TrayIcon.
+            //TrayMaker(); // Call TrayMaker Method To setup TrayIcon.
 
             MPlayerSetup(); // setup property of media player.
 
@@ -157,7 +157,7 @@ namespace Mink_Player_Core
         /// <summary>
         /// This Function Will Setup TrayIcon.
         /// </summary>
-        static void TrayMaker()
+        static public void TrayMaker()
         {
             MyNotify.Icon = Properties.Resources.mtrayEmpty;
             MyNotify.Visible = true;
