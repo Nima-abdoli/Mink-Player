@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
@@ -114,6 +114,8 @@ namespace Mink_Player_Core
         void ClearBackground()
         {
             BackGrid.Background = null; // clear color of splash screen background 
+
+            AppVerTxtBl.Visibility = Visibility.Collapsed; // collapse version number textblock 
 
             AppName_TxtBl.Visibility = Visibility.Collapsed; // collapse app name text block
 

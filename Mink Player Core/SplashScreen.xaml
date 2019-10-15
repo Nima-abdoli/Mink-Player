@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         Height="200" Width="180" 
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None" ResizeMode="NoResize"
+        WindowStyle="None" 
+        ResizeMode="NoResize"
         Icon="Resources/Icon/M Logo.ico"
-        AllowsTransparency="True" Background="{x:Null}" 
-        Topmost="True" ShowInTaskbar="False">
+        AllowsTransparency="True" 
+        Background="{x:Null}" 
+        Topmost="True" 
+        ShowInTaskbar="False">
 
     <Window.Resources>
         <Storyboard x:Key="ProgressAnimation" AutoReverse="True" RepeatBehavior="Forever">
@@ -247,20 +250,24 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Image x:Name="AppImage" HorizontalAlignment="Center" 
+        <TextBlock x:Name="AppVerTxtBl" Text="ver : 0.2" FontSize="9" Foreground="#FFC49B6F" 
+                   Margin="5 0 0 1" FontFamily="Calibri"/>
+
+        <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
                Source="Resources/Image/Cover/Mink No Lips Small.png" 
                Width="100" Height="100" />
 
 
-        <TextBlock x:Name="AppName_TxtBl" Text="Mink Player" Grid.Row="1" 
+        <TextBlock x:Name="AppName_TxtBl" Text="Mink Player" Grid.Row="2" 
                    VerticalAlignment="Center" HorizontalAlignment="Center" 
-                   FontSize="22" Margin="0 10 0 10" Foreground="#FF826252" 
+                   FontSize="22" Margin="0 5 0 5" Foreground="#FFBA8158" 
                    FontFamily="Montel"/>
 
-        <Grid x:Name="Progressgrid" Grid.Row="2">
+        <Grid x:Name="Progressgrid" Grid.Row="3">
 
             <Rectangle x:Name="rectangle" Width="15" Fill="#7F976953" Margin="14.88,36.02,150.119,0" RenderTransformOrigin="0.5,0.5" Height="20">
                 <Rectangle.RenderTransform>
