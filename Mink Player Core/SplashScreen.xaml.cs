@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
@@ -14,7 +14,7 @@ namespace Mink_Player_Core
         #region private Property
 
         // set time that splash screen will be open
-        int TimeLeft = 4;
+        int TimeLeft = 5;
 
         // animation for move element in top(x) axis.
         DoubleAnimation TopAnimation = new DoubleAnimation();
@@ -38,6 +38,8 @@ namespace Mink_Player_Core
         public SplashScreen()
         {
             InitializeComponent();
+
+            TimeLeft = RanadomTime(); // set time left
 
             Timer.Tick += Timer_Tick; // make tick event for timer
 
@@ -121,6 +123,18 @@ namespace Mink_Player_Core
 
             Progressgrid.Visibility = Visibility.Collapsed; // collapse progress grid. it will clear child of it to.
         }// End of Clear Background method
+        #endregion
+
+        #region Random Time
+        /// <summary>
+        /// Make Random time for splash screen time left
+        /// </summary>
+        /// <returns>Return random int 2 - 5</returns>
+        int RanadomTime()
+        {
+            return new Random().Next(2, 5); // make random number between 2 - 5. and return it to caller
+
+        }// End of RandomTime Method
         #endregion
 
     }// End of SplashScreen Class
