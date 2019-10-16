@@ -259,7 +259,9 @@
 
         <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
                Source="Resources/Image/Cover/Mink No Lips Small.png" 
-               Width="100" Height="100" />
+               Width="100" Height="100" 
+               RenderOptions.EdgeMode="Aliased" 
+               RenderOptions.BitmapScalingMode="HighQuality"/>
 
 
         <TextBlock x:Name="AppName_TxtBl" Text="Mink Player" Grid.Row="2" 
