@@ -14,7 +14,7 @@
 *.userprefs
 
 # Build results
-Mink Player/
+
 TestMink/
 [Dd]ebug/
 [Dd]ebugPublic/
