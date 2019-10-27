@@ -45,11 +45,15 @@ namespace Mink_Player
 
             TrayMaker();
 
+<<<<<<< HEAD
 <<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
             //MainDashboard.Show();
 =======
             MainDashboard.Show();
 >>>>>>> .net framework back again
+=======
+            MainDashboard.Show();
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
 
             // Run application 
             MyApp.Run();
@@ -80,11 +84,15 @@ namespace Mink_Player
 
         static void TrayMaker()
         {
+<<<<<<< HEAD
 <<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
             MyNotify.Icon = Properties.Resources.Tray_Play;
 =======
             MyNotify.Icon = Properties.Resources.M_Logo;
 >>>>>>> .net framework back again
+=======
+            MyNotify.Icon = Properties.Resources.M_Logo;
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
             MyNotify.Visible = true;
 
             ContexSetup();
@@ -103,10 +111,13 @@ namespace Mink_Player
         static private void ShowItem_Click(object sender, EventArgs e)
         {
             OpenFileDiag.ShowDialog();
+<<<<<<< HEAD
 <<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
 
 =======
 >>>>>>> .net framework back again
+=======
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
         }
 
         /// <summary>

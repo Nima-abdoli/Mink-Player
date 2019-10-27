@@ -73,8 +73,11 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< HEAD
 <<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
 =======
+=======
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
         internal static System.Drawing.Icon M_Logo {
             get {
                 object obj = ResourceManager.GetObject("M_Logo", resourceCulture);
@@ -105,7 +108,10 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< HEAD
 >>>>>>> .net framework back again
+=======
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
         internal static System.Drawing.Icon Tray_Empty {
             get {
                 object obj = ResourceManager.GetObject("Tray_Empty", resourceCulture);
@@ -126,8 +132,11 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< HEAD
 <<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
 =======
+=======
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
         internal static System.Drawing.Icon Tray_Poly {
             get {
                 object obj = ResourceManager.GetObject("Tray_Poly", resourceCulture);
@@ -138,7 +147,10 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< HEAD
 >>>>>>> .net framework back again
+=======
+>>>>>>> 92f5757a04c5bb11e4dfceb3853e9106d464cb1c
         internal static System.Drawing.Icon Tray_Puase {
             get {
                 object obj = ResourceManager.GetObject("Tray_Puase", resourceCulture);
