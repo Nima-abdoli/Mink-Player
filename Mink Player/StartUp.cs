@@ -179,7 +179,7 @@ namespace Mink_Player
             // Check to be sure only get left clicks
             if (e.Button == MouseButtons.Left && OpenFileDiag.FileName != "")
             {
-                //new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
+                new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
             }
         }
         #endregion
@@ -245,7 +245,7 @@ namespace Mink_Player
                 SetState(PlayerState.Play);
                 MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
                 MPlayer.Play();
-                //new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
+                new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
             }
         }// End of PlayMuic
         #endregion

@@ -5,8 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mink_Player.Windows"
         mc:Ignorable="d"
-        Title="Notification" Height="450" Width="800">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Notification" 
+        ShowInTaskbar="False"
+        Height="150" Width="330" 
+        Background="{x:Null}" 
+        ResizeMode="NoResize"
+        Topmost="True" 
+        Focusable="False"
+        MouseDown="Window_MouseDown"
+        Loaded="Window_Loaded">
+
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="BackMask" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="15" Background="#FF646464"/>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="15" Background="#FF616060">
+            <Border.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=BackMask}"/>
+            </Border.OpacityMask>
+
+            <Grid>
+
+                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="/Mink_Player;component/Resources/Images/Cover/Cassette.png" 
+                       RenderOptions.BitmapScalingMode="HighQuality">
+                    <Image.Effect>
+                        <BlurEffect Radius="15" />
+                    </Image.Effect>
+                </Image>
+
+                <Rectangle Fill="#66303030" />
+
+            </Grid>
+
+        </Border>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="NameTrack_TxtBl" Text="Track Name" Grid.Row="0" HorizontalAlignment="Center"
+                       Margin="2 10 2 5" FontSize="16" TextTrimming="CharacterEllipsis" Foreground="White"/>
+
+            <TextBlock x:Name="NameArtist_TxtBl" Text="Artist Name" Grid.Row="1" HorizontalAlignment="Center"
+                       Margin="2 3" FontSize="14" TextTrimming="CharacterEllipsis" Foreground="White"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 5 0 0">
+                <Button x:Name="btn1" Content="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0"
+                        Click="btn1_Click"/>
+                <Button x:Name="btn2" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0" 
+                        Click="btn2_Click"/>
+                <Button x:Name="btn3" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+                        Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0"
+                        Click="btn3_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Border x:Name="Cover_Image" Margin="0 0 15 0" Width="120" Height="120" CornerRadius="10" 
+                Grid.RowSpan="2" Grid.Column="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
+            </Border.Effect>
+            <Border.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Mink_Player;component/Resources/Images/Cover/Cassette.png"  
+                            RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
+            </Border.Background>
+        </Border>
+
     </Grid>
+
+
 </Window>
