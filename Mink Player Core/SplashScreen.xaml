@@ -245,8 +245,9 @@
         </EventTrigger>
     </Window.Triggers>
 
+    <!-- #FF1B2C34  &  #FF1A1A1D &  -->
 
-    <Grid x:Name="BackGrid" Background="#FF1B2C34">
+    <Grid x:Name="BackGrid" Background="#FF111111">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -260,8 +261,8 @@
         <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
                Source="Resources/Image/Cover/Mink No Lips Small.png" 
                Width="100" Height="100" 
-               RenderOptions.EdgeMode="Aliased" 
-               RenderOptions.BitmapScalingMode="HighQuality"/>
+               RenderOptions.BitmapScalingMode="HighQuality"
+               RenderOptions.EdgeMode="Aliased"/>
 
 
         <TextBlock x:Name="AppName_TxtBl" Text="Mink Player" Grid.Row="2" 

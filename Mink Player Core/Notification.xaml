@@ -36,7 +36,8 @@
 
             <Grid>
 
-                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="Resources/Image/Cover/Cassette.png" >
+                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="Resources/Image/Cover/Cassette.png" 
+                       RenderOptions.BitmapScalingMode="HighQuality">
                     <Image.Effect>
                         <BlurEffect Radius="15" />
                     </Image.Effect>
@@ -74,12 +75,14 @@
             </StackPanel>
         </Grid>
 
-        <Border x:Name="Cover_Image" Margin="0 0 15 0" Width="120" Height="120" CornerRadius="10" Grid.RowSpan="2" Grid.Column="1">
+        <Border x:Name="Cover_Image" Margin="0 0 15 0" Width="120" Height="120" CornerRadius="10" 
+                Grid.RowSpan="2" Grid.Column="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
             </Border.Effect>
             <Border.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="Resources/Image/Cover/Cassette.png"/>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/Image/Cover/Cassette.png"  
+                            RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
             </Border.Background>
         </Border>
 

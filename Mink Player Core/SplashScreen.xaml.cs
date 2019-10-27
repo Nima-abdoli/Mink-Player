@@ -87,15 +87,17 @@ namespace Mink_Player_Core
         /// </summary>
         void ToTrayAnimation()
         {
+            
             // move window in top(x)axis. go to bottom of screen
             TopAnimation.From = this.Top;
             TopAnimation.To = SystemParameters.WorkArea.Height - 30;
-            TopAnimation.Duration = TimeSpan.FromMilliseconds(1000);
+            TopAnimation.Duration = TimeSpan.FromMilliseconds(800);
 
             // move window in left(y)axis. go to Right of screen
             Leftanimation.From = Left;
-            Leftanimation.To = SystemParameters.WorkArea.Width - 400;
-            Leftanimation.Duration = TimeSpan.FromMilliseconds(1000);
+            // Leftanimation.To = SystemParameters.WorkArea.Width - 400;
+            Leftanimation.To = 960;
+            Leftanimation.Duration = TimeSpan.FromMilliseconds(800);
 
             // shrink app image width. 
             ImageSizeAnimation.From = AppImage.Width;
