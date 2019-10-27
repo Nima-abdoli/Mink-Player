@@ -141,7 +141,7 @@ namespace Mink_Player.Windows
             else
             {
                 // get default Image From Application Resource
-                TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Image/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
+                TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
             }
 
             Cover_Image.Background = new ImageBrush(TrackCover);
