@@ -121,12 +121,30 @@
   <data name="Cassette" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\background\cassette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+<<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
+=======
+  <data name="Mink_No_Lips_Small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\background\mink no lips small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M Logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Spring_With_M_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\spring with m 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+>>>>>>> .net framework back again
   <data name="Tray_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icon\tray\tray empty.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tray_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icon\tray\tray play.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+<<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
+=======
+  <data name="Tray_Poly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tray Poly.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+>>>>>>> .net framework back again
   <data name="Tray_Puase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icon\tray\tray puase.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

@@ -129,5 +129,20 @@
   <ItemGroup>
     <Resource Include="Image\Background\Cassette.png" />
   </ItemGroup>
+<<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
+=======
+  <ItemGroup>
+    <Resource Include="Image\Spring With M 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Tray Poly.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\M Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Background\Mink No Lips Small.png" />
+  </ItemGroup>
+>>>>>>> .net framework back again
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

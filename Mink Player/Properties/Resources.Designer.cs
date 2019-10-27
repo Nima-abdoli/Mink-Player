@@ -73,6 +73,39 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
+=======
+        internal static System.Drawing.Icon M_Logo {
+            get {
+                object obj = ResourceManager.GetObject("M_Logo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mink_No_Lips_Small {
+            get {
+                object obj = ResourceManager.GetObject("Mink_No_Lips_Small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spring_With_M_11 {
+            get {
+                object obj = ResourceManager.GetObject("Spring_With_M_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+>>>>>>> .net framework back again
         internal static System.Drawing.Icon Tray_Empty {
             get {
                 object obj = ResourceManager.GetObject("Tray_Empty", resourceCulture);
@@ -93,6 +126,19 @@ namespace Mink_Player.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+<<<<<<< d255d48714d3c7928e8fc62c94e2a3a9c18bab8d
+=======
+        internal static System.Drawing.Icon Tray_Poly {
+            get {
+                object obj = ResourceManager.GetObject("Tray_Poly", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+>>>>>>> .net framework back again
         internal static System.Drawing.Icon Tray_Puase {
             get {
                 object obj = ResourceManager.GetObject("Tray_Puase", resourceCulture);
