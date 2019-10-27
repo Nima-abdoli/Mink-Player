@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" 
         ResizeMode="NoResize"
-        Icon="/Mink_Player;component/Resources/Icons/M Logo.ico"
+        Icon="/Mink Player;component/Resources/Icons/M Logo.ico"
         AllowsTransparency="True" 
         Background="{x:Null}" 
         Topmost="True" 
@@ -258,7 +258,7 @@
                    Margin="5 0 0 1" FontFamily="Calibri"/>
 
         <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
-               Source="/Mink_Player;component/Resources/Images/Mink Cover.png" 
+               Source="/Mink Player;component/Resources/Images/Mink Cover.png" 
                Width="100" Height="100" 
                RenderOptions.BitmapScalingMode="HighQuality"
                RenderOptions.EdgeMode="Aliased"/>

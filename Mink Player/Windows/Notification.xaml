@@ -37,7 +37,7 @@
 
             <Grid>
 
-                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="/Mink_Player;component/Resources/Images/Cover/Cassette.png" 
+                <Image x:Name="BackRound_Image" Stretch="UniformToFill" Source="/Mink Player;component/Resources/Images/Cover/Cassette.png" 
                        RenderOptions.BitmapScalingMode="HighQuality">
                     <Image.Effect>
                         <BlurEffect Radius="15" />
@@ -82,7 +82,7 @@
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
             </Border.Effect>
             <Border.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="/Mink_Player;component/Resources/Images/Cover/Cassette.png"  
+                <ImageBrush Stretch="Uniform" ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png"  
                             RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
             </Border.Background>
         </Border>
