@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Mink_Player
+namespace Mink_Player.Windows
 {
     /// <summary>
     /// Interaction logic for Notification.xaml
