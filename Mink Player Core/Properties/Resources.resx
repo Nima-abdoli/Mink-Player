@@ -121,13 +121,22 @@
   <data name="Cassette" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\image\cover\cassette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tray_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icon\tray\tray empty.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mink_Cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\image\cover\mink cover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tray_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icon\tray\tray play.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mink_No_Lips_Small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\image\cover\mink no lips small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tray_Puase" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icon\tray\tray puase.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mtrayEmpty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtrayempty.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mTrayPause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtraypause.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mTrayPlay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\tray\mtrayplay.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icon\m logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

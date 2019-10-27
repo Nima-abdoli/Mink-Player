@@ -73,9 +73,39 @@ namespace Mink_Player_Core.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Tray_Empty {
+        internal static System.Drawing.Icon M_Logo {
             get {
-                object obj = ResourceManager.GetObject("Tray_Empty", resourceCulture);
+                object obj = ResourceManager.GetObject("M_Logo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mink_Cover {
+            get {
+                object obj = ResourceManager.GetObject("Mink_Cover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mink_No_Lips_Small {
+            get {
+                object obj = ResourceManager.GetObject("Mink_No_Lips_Small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon mtrayEmpty {
+            get {
+                object obj = ResourceManager.GetObject("mtrayEmpty", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -83,9 +113,9 @@ namespace Mink_Player_Core.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Tray_Play {
+        internal static System.Drawing.Icon mTrayPause {
             get {
-                object obj = ResourceManager.GetObject("Tray_Play", resourceCulture);
+                object obj = ResourceManager.GetObject("mTrayPause", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -93,9 +123,9 @@ namespace Mink_Player_Core.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Tray_Puase {
+        internal static System.Drawing.Icon mTrayPlay {
             get {
-                object obj = ResourceManager.GetObject("Tray_Puase", resourceCulture);
+                object obj = ResourceManager.GetObject("mTrayPlay", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

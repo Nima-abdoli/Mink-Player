@@ -5,17 +5,39 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Mink_Player_Core</RootNamespace>
     <UseWPF>true</UseWPF>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Xmasta.pfx</AssemblyOriginatorKeyFile>
+    <PackageId>Mink Player</PackageId>
+    <Authors>Xmasta inc</Authors>
+    <Product>Mink Player</Product>
+    <Company>Xmasta inc</Company>
+    <Description>Simple Music Player that work in background</Description>
+    <AssemblyName>Mink Player</AssemblyName>
+    <ApplicationIcon>Resources\Icon\M Logo.ico</ApplicationIcon>
+   
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icon\M Logo.ico" />
+    <None Remove="Resources\Icon\Tray\mTray-Pause.ico" />
+    <None Remove="Resources\Icon\Tray\mTray-Play.ico" />
+    <None Remove="Resources\Icon\Tray\mtrayEmpty.ico" />
+    <None Remove="Resources\Icon\Tray\mTrayPause.ico" />
+    <None Remove="Resources\Icon\Tray\mTrayPlay.ico" />
+    <None Remove="Resources\Icon\Tray\mTray_Empthy.ico" />
+    <None Remove="Resources\Icon\Tray\mTray_Pause.png" />
+    <None Remove="Resources\Icon\Tray\mTray_Play.png" />
     <None Remove="Resources\Icon\Tray\Tray Empty.ico" />
     <None Remove="Resources\Icon\Tray\Tray Puase.ico" />
     <None Remove="Resources\Image\Cover\Cassette.png" />
+    <None Remove="Resources\Image\Cover\Mink Cover.png" />
+    <None Remove="Resources\Image\Cover\Mink No Lips Small.png" />
     <None Remove="Resources\Tray Play.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+    <PackageReference Include="TagLibSharp" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,10 +62,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Icon\Tray\Tray Empty.ico" />
-    <Resource Include="Resources\Icon\Tray\Tray Play.ico" />
-    <Resource Include="Resources\Icon\Tray\Tray Puase.ico" />
-    <Resource Include="Resources\Image\Cover\Cassette.png" />
+    <Resource Include="Resources\Icon\M Logo.ico" />
+    <Resource Include="Resources\Icon\Tray\mtrayEmpty.ico" />
+    <Resource Include="Resources\Icon\Tray\mTrayPause.ico" />
+    <Resource Include="Resources\Icon\Tray\mTrayPlay.ico" />
+    <Resource Include="Resources\Image\Cover\Cassette.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\Cover\Mink Cover.png" />
+    <Resource Include="Resources\Image\Cover\Mink No Lips Small.png" />
   </ItemGroup>
 
 </Project>
