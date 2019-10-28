@@ -167,6 +167,7 @@ namespace Mink_Player
             ContexSetup();
 
             MyNotify.ContextMenu = mContextMenu;
+
         }// End Of TrayMaker
         #endregion
 
@@ -190,11 +191,12 @@ namespace Mink_Player
         /// </summary>
         private static void SelectMItem_Click(object sender, EventArgs e)
         {
+
             OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
 
             if (OpenFileDiag.FileName != "")
             {
-                AddToList();
+                AddToList(); // add selected music to list
             }
 
         }// End of SelectMItem_Click Event
@@ -207,6 +209,7 @@ namespace Mink_Player
         private static void ExitItem_Click(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown(); // Close(Shutdown) This(MyApp) application
+
         }// End of ExitItem Event
         #endregion
 
@@ -241,12 +244,17 @@ namespace Mink_Player
         /// </summary>
         static public void PlayMusic()
         {
+            // check state of player to not be in play state.
             if (PlayerState == PlayerState.Empty || PlayerState == PlayerState.Pause)
             {
-                SetState(PlayerState.Play);
-                MPlayer.Play();
-                new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
-            }
+                SetState(PlayerState.Play); // set state of player to play so means player playing music.
+
+                MPlayer.Play(); // music player play music.
+
+                new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // show music notification 
+            
+            }// end of if
+
         }// End of PlayMuic
         #endregion
 
@@ -256,10 +264,11 @@ namespace Mink_Player
         /// </summary>
         static public void SetMuisc()
         {
-            MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
+            MPlayer.Open(new Uri(FileList[SelectedMusic].Path)); // open selected music to music player
 
-            PlayMusic();
-        }
+            PlayMusic(); // call this to play music
+
+        }// end of SetMusic Function 
         #endregion
 
         #region Pause Music Function 
@@ -367,11 +376,11 @@ namespace Mink_Player
             // check if list reach to beginning or not. if reach to beginning of list it will set to end of the list.
             if (SelectedMusic > 0)
             {
-                SelectedMusic--;
+                SelectedMusic--; // go back by one in the list.
             }
             else
             {
-                SelectedMusic = FileList.Count - 1;
+                SelectedMusic = FileList.Count - 1; // go to last music if list reach to first one.
             }
 
         } // end of LastInLIst
@@ -400,7 +409,9 @@ namespace Mink_Player
                 case PlayerState.Empty:
                     MyNotify.Icon = Properties.Resources.mTrayEmpty;
                     break;
+
             }// end of switch
+
         }// End of SetState Function
         #endregion
 
