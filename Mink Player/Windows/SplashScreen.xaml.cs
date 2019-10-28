@@ -14,7 +14,7 @@ namespace Mink_Player.Windows
         #region private Property
 
         // set time that splash screen will be open
-        int TimeLeft = 5;
+        int TimeLeft = 1;
 
         // animation for move element in top(x) axis.
         DoubleAnimation TopAnimation = new DoubleAnimation();
@@ -39,7 +39,9 @@ namespace Mink_Player.Windows
         {
             InitializeComponent();
 
-            TimeLeft = RanadomTime(); // set time left
+            //TimeLeft = RanadomTime(); // set time left
+
+            TimeLeft = 0; // For Debug
 
             Timer.Tick += Timer_Tick; // make tick event for timer
 

@@ -50,6 +50,9 @@ namespace Mink_Player
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
 
+        // Create instance from ContextMenu
+        //Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
+
         #endregion
 
         #region Entry Point Main Function
@@ -180,7 +183,15 @@ namespace Mink_Player
             // Check to be sure only get left clicks
             if (e.Button == MouseButtons.Left && OpenFileDiag.FileName != "")
             {
-                new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
+                // new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
+            }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                //System.Windows.MessageBox.Show(e.Location.ToString());
+
+                Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
+                ContexMenu.Show(); // Show Context Menu
             }
         }
         #endregion

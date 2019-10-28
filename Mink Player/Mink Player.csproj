@@ -88,6 +88,9 @@
   <ItemGroup>
     <Compile Include="MusicPath.cs" />
     <Compile Include="StartUp.cs" />
+    <Compile Include="Windows\ContextMenu.xaml.cs">
+      <DependentUpon>ContextMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
     <Compile Include="Windows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
