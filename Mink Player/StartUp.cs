@@ -217,19 +217,20 @@ namespace Mink_Player
         static void AddToList()
         {
 
-            // Check if list is empty set selected index to zero
-            if (PlayerState == PlayerState.Empty)
-            {
-                SelectedMusic = 0;  // set selected index in first time
-            }
-
             // Adding user selected file to list 
             foreach (string mPath in OpenFileDiag.FileNames)
             {
                 FileList.Add(new MusicPath() { Path = mPath });
             }
 
-            PlayMusic(); // play Music For the First time
+            // Check if list is empty set selected index to zero
+            if (PlayerState == PlayerState.Empty)
+            {
+                SelectedMusic = 0;  // set selected index in first time
+
+                SetMuisc(); // set Music For the First time
+
+            }
 
         }// End of AddtoList
         #endregion
@@ -243,11 +244,22 @@ namespace Mink_Player
             if (PlayerState == PlayerState.Empty || PlayerState == PlayerState.Pause)
             {
                 SetState(PlayerState.Play);
-                MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
                 MPlayer.Play();
                 new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show();
             }
         }// End of PlayMuic
+        #endregion
+
+        #region Set Music Function
+        /// <summary>
+        /// Set Music from selected path to player.
+        /// </summary>
+        static public void SetMuisc()
+        {
+            MPlayer.Open(new Uri(FileList[SelectedMusic].Path));
+
+            PlayMusic();
+        }
         #endregion
 
         #region Pause Music Function 
@@ -290,7 +302,7 @@ namespace Mink_Player
 
                 SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-                PlayMusic(); // play selected file.
+                SetMuisc(); // set selected file.
             }
             else
             {
@@ -312,7 +324,7 @@ namespace Mink_Player
 
             SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            PlayMusic(); // play selected file.
+            SetMuisc(); // set selected file.
 
         } // End of NextSong Function
         #endregion
@@ -327,7 +339,7 @@ namespace Mink_Player
 
             SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            PlayMusic(); // play selected file.
+            SetMuisc(); // play selected file.
 
         } // end of LastSong 
         #endregion
