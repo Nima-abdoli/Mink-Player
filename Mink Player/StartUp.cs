@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -18,10 +19,10 @@ namespace Mink_Player
         static public NotifyIcon MyNotify = new NotifyIcon();
 
         // Instance from Contextmenu Windows Form.
-        static ContextMenu mContextMenu = new ContextMenu();
+        static ContextMenu mContextMenu = new ContextMenu(); // To Delete : this is old must be deleted
 
         // Instance from File Dialog for open file to add to list.
-        static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
+        static public Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
         {
             Multiselect = true
         };
@@ -221,7 +222,7 @@ namespace Mink_Player
         /// <summary>
         /// Add user file to list 
         /// </summary>
-        static void AddToList()
+        static public void AddToList()
         {
 
             // Adding user selected file to list 
@@ -419,5 +420,46 @@ namespace Mink_Player
         }// End of SetState Function
         #endregion
 
-    }
-}
+        #region Select Music Function
+        /// <summary>
+        /// Select Music from ContextMenu
+        /// </summary>
+        public static void SelectMusic()
+        {
+
+            
+            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
+
+            if (OpenFileDiag.FileName != "")
+            {
+                AddToList(); // add selected music to list
+            }
+
+        }// End of SelectMItem_Click Event
+        #endregion
+
+        #region Context Menu Calling Function
+        /// <summary>
+        /// this function call contextmenu and handle 
+        /// </summary>
+        static void ContextMenuCalling()
+        {
+            // check if list is empty or not.
+            if (FileList.Count > 0)
+            {
+
+                Windows.ContextMenu ContexMenu = new Windows.ContextMenu(FileList[SelectedMusic].Path, Cursor.Position);
+
+                ContexMenu.Show(); // Show Context Menu
+            }
+            else
+            {
+                Windows.ContextMenu ContexMenu = new Windows.ContextMenu(null, Cursor.Position);
+                ContexMenu.Show(); // Show Context Menu
+            }
+
+        }// End of ContextMenuCalling fiction
+        #endregion
+
+    }// End of StartUp class
+}// End of Mink_Player NameSpace
