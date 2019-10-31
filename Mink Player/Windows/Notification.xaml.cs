@@ -50,7 +50,6 @@ namespace Mink_Player.Windows
         #endregion
 
         #region Constructors for Notification Windows
-
         public Notification(string FilePath, int TimeLeft)
         {
             InitializeComponent();

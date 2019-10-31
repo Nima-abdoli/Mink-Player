@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
@@ -78,6 +78,24 @@ namespace Mink_Player
         }//End of Main
         #endregion    
 
+        #region Tray Maker Method
+        /// <summary>
+        /// This Function Will Setup TrayIcon.
+        /// </summary>
+        static public void TrayMaker()
+        {
+            MyNotify.Icon = Properties.Resources.mTrayEmpty;
+            MyNotify.Visible = true;
+            MyNotify.MouseClick += MyNotify_MouseClick;
+
+            // Call To Setup Context Menu For TrayIcon.
+            //ContexSetup(); // To delete : this is old must be deleted 1
+
+            //MyNotify.ContextMenu = mContextMenu; // To delete : this is old must be deleted 2
+
+        }// End Of TrayMaker
+        #endregion
+
         #region Application Exit Event.
         /// <summary>
         /// this event will fire when app will be exited.
@@ -156,44 +174,19 @@ namespace Mink_Player
         }// End of DashboardItem_Click
         #endregion
 
-        #region Tray Maker Method
-        /// <summary>
-        /// This Function Will Setup TrayIcon.
-        /// </summary>
-        static public void TrayMaker()
-        {
-            MyNotify.Icon = Properties.Resources.mTrayEmpty;
-            MyNotify.Visible = true;
-            MyNotify.MouseClick += MyNotify_MouseClick;
-
-            // Call To Setup Context Menu For TrayIcon.
-            ContexSetup();
-
-            MyNotify.ContextMenu = mContextMenu;
-
-        }// End Of TrayMaker
-        #endregion
-
         #region MyNotify MouseClick Event
         /// <summary>
         /// Mouse Click Event for MyNotify
         /// </summary>
         private static void MyNotify_MouseClick(object sender, MouseEventArgs e)
         {
-            // Check to be sure only get left clicks
-            if (e.Button == MouseButtons.Left && OpenFileDiag.FileName != "")
+
+            if (e.Button == MouseButtons.Right)
             {
-                // new Windows.Notification(FileList[SelectedMusic].Path, NotificationTime).Show(); // Show notification
+                ContextMenuCalling();
             }
 
-            if (e.Button == MouseButtons.Left)
-            {
-                //System.Windows.MessageBox.Show(e.Location.ToString());
-
-                Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
-                ContexMenu.Show(); // Show Context Menu
-            }
-        }
+        }// End of MyNotify_MouseClick
         #endregion
 
         #region Select Music Click Event
