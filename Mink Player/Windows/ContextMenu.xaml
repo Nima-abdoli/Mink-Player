@@ -79,13 +79,12 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="SettingBtn" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20"
-                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting" Visibility="Hidden"
-                        HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"/>
+                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting"
+                        HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}"/>
 
-            <Button x:Name="MuteBtn" Content="&#xE995;" FontFamily="Segoe MDL2 Assets" FontSize="20"
-                    Width="30" Height="30" Margin="0 10 20 0" Grid.Row="0" ToolTip="Mute/Unmute Sound"
-                    HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"
-                    Click="MuteBtn_Click"/>
+            <Button x:Name="MuteBtn" Content="&#xE74F;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                        Width="30" Height="30" Margin="0 10 20 0" Grid.Row="0" ToolTip="Mute/Unmute Sound"
+                        HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}"/>
 
             <TextBlock x:Name="NameTrack_TxtBl" Text="Music Title"  Grid.Row="1" Margin="3,15,3,0" HorizontalAlignment="Center"
                        FontSize="18" Foreground="#FFECECEC" Height="24" VerticalAlignment="Top" 
@@ -144,13 +143,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
-                        FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
-                        Click="SelectMusic_Btn_Click" />
+                <Button Grid.Column="0" Width="25" Height="25" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Select Music from File"
+                        FontSize="20" Content="&#xE762;" FontFamily="Segoe MDL2 Assets" />
 
-                <Button x:Name="DashBoard_Btn" Grid.Column="1" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Hidden"
+                <Button Grid.Column="1" Width="25" Height="25" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard"
                         FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" />
 
                 <Button x:Name="AppClose_Btn" Grid.Column="2" Width="25" Height="25" Foreground="#FFECECEC"
@@ -165,11 +163,7 @@
 
 
         <!-- Cover Image -->
-        <Border x:Name="Cover_Image" Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" 
-                RenderOptions.BitmapScalingMode="HighQuality">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
-            </Border.Effect>
+        <Border Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" >
             <Border.Background>
                 <ImageBrush ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png" Stretch="Uniform" />
             </Border.Background>
