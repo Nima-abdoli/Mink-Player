@@ -16,6 +16,11 @@ namespace Mink_Player
     /// Show Player state of player.
     /// </summary>
     public enum PlayerState { Play, Pause, Empty };
+     
+    /// <summary>
+    /// Show Player Mute state of player.
+    /// </summary>
+    public enum PlayerMute { Mute,Unmute};
 
     
 }

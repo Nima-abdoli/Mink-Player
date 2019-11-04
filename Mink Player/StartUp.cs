@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -18,10 +19,10 @@ namespace Mink_Player
         static public NotifyIcon MyNotify = new NotifyIcon();
 
         // Instance from Contextmenu Windows Form.
-        static ContextMenu mContextMenu = new ContextMenu();
+        static ContextMenu mContextMenu = new ContextMenu(); // To Delete : this is old must be deleted
 
         // Instance from File Dialog for open file to add to list.
-        static Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
+        static public Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
         {
             Multiselect = true
         };
@@ -42,10 +43,13 @@ namespace Mink_Player
         static int SelectedMusic { get; set; }
 
         // Hold the status of Media Player.(Play/Pause)
-        static public bool PlayerStatus { get; set; }
+        static public bool PlayerStatus { get; set; } // To delete: this property seems to be useless
 
         // Hold player State.
         static public PlayerState PlayerState = PlayerState.Empty;
+
+        // Hold Player Mute/unmute State
+        static public PlayerMute PlyerMutestate = PlayerMute.Unmute;
 
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
@@ -74,7 +78,7 @@ namespace Mink_Player
             Dashboard.Hide(); // Hide dashboard so app wont close.
 
             MyApp.Run(); // Run Application 
-
+            
         }//End of Main
         #endregion    
 
@@ -221,7 +225,7 @@ namespace Mink_Player
         /// <summary>
         /// Add user file to list 
         /// </summary>
-        static void AddToList()
+        static public void AddToList()
         {
 
             // Adding user selected file to list 
@@ -419,5 +423,67 @@ namespace Mink_Player
         }// End of SetState Function
         #endregion
 
-    }
-}
+        #region Select Music Function
+        /// <summary>
+        /// Select Music from ContextMenu
+        /// </summary>
+        public static void SelectMusic()
+        {
+
+            
+            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
+
+            if (OpenFileDiag.FileName != "")
+            {
+                AddToList(); // add selected music to list
+            }
+
+        }// End of SelectMItem_Click Event
+        #endregion
+
+        #region Context Menu Calling Function
+        /// <summary>
+        /// this function call contextmenu and handle 
+        /// </summary>
+        static void ContextMenuCalling()
+        {
+            // check if list is empty or not.
+            if (FileList.Count > 0)
+            {
+
+                Windows.ContextMenu ContexMenu = new Windows.ContextMenu(FileList[SelectedMusic].Path, Cursor.Position);
+
+                ContexMenu.Show(); // Show Context Menu
+            }
+            else
+            {
+                Windows.ContextMenu ContexMenu = new Windows.ContextMenu(null, Cursor.Position);
+                ContexMenu.Show(); // Show Context Menu
+            }
+
+        }// End of ContextMenuCalling fiction
+        #endregion
+
+        #region Muting Player 
+        /// <summary>
+        /// Mute and unmute player
+        /// </summary>
+        static public void MutePlayer()
+        {
+
+            if (StartUp.PlyerMutestate == PlayerMute.Mute)
+            {
+                PlyerMutestate = PlayerMute.Unmute;
+                MPlayer.IsMuted = false;
+            }
+            else if (StartUp.PlyerMutestate == PlayerMute.Unmute)
+            {
+                PlyerMutestate = PlayerMute.Mute;
+                MPlayer.IsMuted = true;
+            }
+
+        }// End Of MutePLayer Function
+        #endregion
+
+    }// End of StartUp class
+}// End of Mink_Player NameSpace
