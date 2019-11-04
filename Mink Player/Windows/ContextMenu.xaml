@@ -145,7 +145,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Select Music from File"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
                         FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
                         Click="SelectMusic_Btn_Click" />
 
