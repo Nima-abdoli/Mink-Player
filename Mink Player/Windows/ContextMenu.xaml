@@ -1,4 +1,4 @@
-<Window x:Class="Mink_Player.Windows.ContextMenu"
+﻿<Window x:Class="Mink_Player.Windows.ContextMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -106,7 +106,15 @@
                 <TextBlock Text="00:00" HorizontalAlignment="Right" FontSize="11" Margin="0 0 10 0"
                            RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC"/>
 
-                <Slider Grid.Row="1" Margin="10 4" />
+                <Slider Grid.Row="1" Margin="10 4" IsMoveToPointEnabled="True" RenderOptions.BitmapScalingMode="HighQuality">
+                    <Slider.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.MergedDictionaries>
+                                <ResourceDictionary Source="/Style/XSlider.xaml"/>
+                            </ResourceDictionary.MergedDictionaries>
+                        </ResourceDictionary>
+                    </Slider.Resources>
+                </Slider>
 
             </Grid>
 
