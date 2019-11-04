@@ -157,10 +157,13 @@
 
 
         <!-- Cover Image -->
-        <Border x:Name="Cover_Image" Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" >
+        <Border x:Name="Cover_Image" Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" 
+                RenderOptions.BitmapScalingMode="HighQuality">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
+            </Border.Effect>
             <Border.Background>
-                <ImageBrush ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png"
-                            RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png" Stretch="Uniform" />
             </Border.Background>
         </Border>
 

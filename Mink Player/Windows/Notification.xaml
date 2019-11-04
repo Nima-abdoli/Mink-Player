@@ -77,13 +77,12 @@
         </Grid>
 
         <Border x:Name="Cover_Image" Margin="0 0 15 0" Width="120" Height="120" CornerRadius="10" 
-                Grid.RowSpan="2" Grid.Column="1">
+                Grid.RowSpan="2" Grid.Column="1" RenderOptions.BitmapScalingMode="HighQuality">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
             </Border.Effect>
             <Border.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png"  
-                            RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
+                <ImageBrush Stretch="Uniform" ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png"/>
             </Border.Background>
         </Border>
 
