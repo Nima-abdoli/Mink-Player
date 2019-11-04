@@ -79,7 +79,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="SettingBtn" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20"
-                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting"
+                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting" Visibility="Hidden"
                         HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"/>
 
             <Button x:Name="MuteBtn" Content="&#xE995;" FontFamily="Segoe MDL2 Assets" FontSize="20"
@@ -142,7 +142,7 @@
                         Click="SelectMusic_Btn_Click" />
 
                 <Button x:Name="DashBoard_Btn" Grid.Column="1" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Hidden"
                         FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" />
 
                 <Button x:Name="AppClose_Btn" Grid.Column="2" Width="25" Height="25" Foreground="#FFECECEC"
