@@ -119,5 +119,15 @@ namespace Mink_Player.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PoiretOne_Regular {
+            get {
+                object obj = ResourceManager.GetObject("PoiretOne_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
