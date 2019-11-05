@@ -37,7 +37,7 @@ namespace Mink_Player
         static Windows.Dashboard Dashboard = new Windows.Dashboard();
 
         // Create static instance from Media player element.
-        static MediaPlayer MPlayer = new MediaPlayer();
+        static public MediaPlayer MPlayer = new MediaPlayer();
 
         // Hold the list index of Selected File.
         static int SelectedMusic { get; set; }
