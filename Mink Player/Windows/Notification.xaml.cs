@@ -247,6 +247,7 @@ namespace Mink_Player.Windows
             // Check to Close App in Certain Time.
             else if (TimeToStay == 0)
             {
+                DTimer.Stop();
                 GC.Collect();
                 this.Close();
             }
