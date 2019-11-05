@@ -254,7 +254,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="AppVerTxtBl" Text="ver : 0.3.5" FontSize="9" Foreground="#FFC49B6F" 
+        <TextBlock x:Name="AppVerTxtBl" Text="ver : 0.4.21" FontSize="9" Foreground="#FFC49B6F" 
                    Margin="5 0 0 1" FontFamily="Calibri"/>
 
         <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
