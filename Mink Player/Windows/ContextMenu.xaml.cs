@@ -45,6 +45,9 @@ namespace Mink_Player.Windows
         // Dispatcher Timer 
         DispatcherTimer DTimer = new DispatcherTimer();
 
+        // Show Drag state of Slider.
+        bool IsSliderDrag = false;
+
         #endregion
 
         #region Constructor
@@ -62,20 +65,18 @@ namespace Mink_Player.Windows
         /// </summary>
         /// <param name="FilePath"> get music file Path</param>
         /// <param name="MouseP"> get the mouse location.</param>
-        public ContextMenu(string FilePath,System.Drawing.Point MouseP)
+        public ContextMenu(string FilePath, System.Drawing.Point MouseP)
         {
             InitializeComponent();
 
-            // set position of window were mouse is.
-            Left = MouseP.X - 115; 
-            Top = SystemParameters.WorkArea.Height - 275;
+            SetWindowPlace(MouseP);
 
             TrackPath = FilePath; // Path to Music file.
 
             StateIconChanger(); // call to set play/pause button icon.
 
             MuteIconChanger(); // Call to set Mute/unmute button icon.
- 
+
         }// End of Constructor
         #endregion
 
@@ -99,17 +100,23 @@ namespace Mink_Player.Windows
         /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
- 
+
             Activate(); // Activate this to be on top and Deactivate event don't have problem in closing windows with one click.
-            
+
             Storyboard sb = this.FindResource("SlideUp") as Storyboard; // get slideUp function to fire it in windows Load up.
 
             sb.Begin(); // Begin Slide Up Function
+
+            TimerSetup(); // call to setup timer in ContextMenu
 
             // check to be sure file is available if not don't get meta of nothing
             if (TrackPath != null)
             {
                 FileTag = TagLib.File.Create(TrackPath); // Set and Make tag From File path that give to it. 
+
+                DTimer.Start(); // start timer when music is selected.
+
+                SetUpSlider(); // call to setup slider in contextmenu.
 
                 CoverExtractor(); // Call To Extract Cover From File.
 
@@ -310,6 +317,141 @@ namespace Mink_Player.Windows
             }
 
         }// End of MUteIconChanger function
+        #endregion
+
+        #region Set Window Place Function
+        /// <summary>
+        /// set context window place in start up it
+        /// </summary>
+        /// <param name="point"> it will be Mouse position</param>
+        void SetWindowPlace(System.Drawing.Point point)
+        {
+
+            //set top of context window
+            if (point.Y > SystemParameters.WorkArea.Height)
+            {
+                Top = SystemParameters.WorkArea.Height - 275;
+            }
+            else if (point.Y < SystemParameters.WorkArea.Height)
+            {
+                Top = point.Y - 280;
+            }
+
+            //set left of context window
+            if (SystemParameters.WorkArea.Width - 230 < point.X)
+            {
+                Left = point.X - 240;
+            }
+            else if (230 > point.X)
+            {
+                Left = point.X + 10;
+            }
+            else
+            {
+                Left = point.X - 115;
+            }
+
+        }// End of SetWindowPlace
+        #endregion
+
+        #region Timer SetUp Function
+        /// <summary>
+        /// Set up timer in window load to show time in slider.
+        /// </summary>
+        void TimerSetup()
+        {
+            // set interval of timer.
+            DTimer.Interval = TimeSpan.FromSeconds(1);
+
+            // enable the timer s0 it will work
+            DTimer.IsEnabled = true;
+
+            // set tick event. fire each '1' second
+            DTimer.Tick += DTimer_Tick;
+
+        }// End of TimerSetUp Function
+        #endregion
+
+        #region DTimer Tick Event
+        private void DTimer_Tick(object sender, EventArgs e)
+        {
+            // show elapsed time in mm:ss format.
+            TimePass_TxtBl.Text = StartUp.MPlayer.Position.ToString(@"mm\:ss");
+
+            // show elapsed time in slider tooltip.
+            Context_Slider.ToolTip = StartUp.MPlayer.Position.ToString(@"mm\:ss");
+
+            // check if thumb dragging didn't change value of slider with each tick of timer. 
+            if (!IsSliderDrag)
+            {
+                // set value of slider with player elapsed time.
+                Context_Slider.Value = StartUp.MPlayer.Position.TotalSeconds;
+            }
+
+        }// End of DTimer_Tick
+        #endregion
+
+        #region SetUp Slider Function
+        /// <summary>
+        /// It will setup slider when window load.
+        /// </summary>
+        void SetUpSlider()
+        {
+            // show total time of the music in mm:ss format.
+            TotalTime_TxtBl.Text = StartUp.MPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
+
+            // get total time of player and set slider maximum.
+            Context_Slider.Maximum = StartUp.MPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+
+            // show elapsed time of music in mm:ss format. good for window load to
+            TimePass_TxtBl.Text = StartUp.MPlayer.Position.ToString(@"mm\:ss");
+
+            // show elapsed time of music in slider tooltip.
+            Context_Slider.ToolTip = StartUp.MPlayer.Position.ToString(@"mm\:ss");
+
+            // set value of slider with elapsed time.
+            Context_Slider.Value = StartUp.MPlayer.Position.TotalSeconds;
+
+        }// End of SetUpSlider
+        #endregion
+
+        #region DragStarted event of Context Slider 
+        /// <summary>
+        /// Drag event of Context slider fire when slider thumb are dragging. and make sure slider value not change.
+        /// </summary>
+        private void Context_Slider_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+        {
+            // set to true to show thumb is dragging.
+            IsSliderDrag = true;
+
+        }// End of Context_Slider_DragStarted event
+        #endregion
+
+        #region DragCompleted Event of Context Slider.
+        /// <summary>
+        /// set time of player to value of slider where user set it.
+        /// </summary>
+        private void Context_Slider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            // set it to false means dragging stopped.
+            IsSliderDrag = false;
+
+            // set the music time from value of slider.
+            StartUp.MPlayer.Position = TimeSpan.FromSeconds(Context_Slider.Value);
+
+        }// End of Context_Slider_DragCompleted event 
+        #endregion
+
+        #region MouseUp Event of Context Slider.
+        /// <summary>
+        /// mouse up event for slider. set time of music to value of slider where user set in track bar.  
+        /// </summary>
+        private void Context_Slider_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            // set the music time from value of slider.
+            StartUp.MPlayer.Position = TimeSpan.FromSeconds(Context_Slider.Value);
+
+        }// End of Context_Slider_MouseUp event
         #endregion
 
     }// End of ContextMenu Class

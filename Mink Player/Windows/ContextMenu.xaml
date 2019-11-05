@@ -101,12 +101,17 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="00:00" HorizontalAlignment="Left" FontSize="11" Margin="10 0 0 0"
+                <TextBlock x:Name="TimePass_TxtBl" Text="00:00" HorizontalAlignment="Left" FontSize="11" Margin="10 0 0 0"
                            RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC"/>
-                <TextBlock Text="00:00" HorizontalAlignment="Right" FontSize="11" Margin="0 0 10 0"
+                <TextBlock x:Name="TotalTime_TxtBl" Text="00:00" HorizontalAlignment="Right" FontSize="11" Margin="0 0 10 0"
                            RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC"/>
 
-                <Slider Grid.Row="1" Margin="10 4" IsMoveToPointEnabled="True" RenderOptions.BitmapScalingMode="HighQuality">
+                <Slider x:Name="Context_Slider" Grid.Row="1" Margin="10 4" IsMoveToPointEnabled="True" 
+                        Maximum="0" Minimum="0"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Thumb.DragStarted="Context_Slider_DragStarted"
+                        Thumb.DragCompleted="Context_Slider_DragCompleted"
+                        MouseUp="Context_Slider_MouseUp">
                     <Slider.Resources>
                         <ResourceDictionary>
                             <ResourceDictionary.MergedDictionaries>
