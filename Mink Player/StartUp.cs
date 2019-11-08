@@ -218,9 +218,11 @@ namespace Mink_Player
             }
             else
             {
-                NextInList(); // select first music of list when list reach to end
+               // NextInList(); // select first music of list when list reach to end
 
                 SetState(PlayerState.Pause); // Set player state to Pause 
+
+                MPlayer.Stop(); // stop the player so music will go to top, and it will start from last music played.
             }
 
         }// End of MPlayer_MediaEnded
@@ -232,12 +234,15 @@ namespace Mink_Player
         /// </summary>
         static public void NextSong()
         {
-            NextInList(); // call to set selected file to next in list
+            if (FileList.Count != 0)
+            {
+                NextInList(); // call to set selected file to next in list
 
-            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+                SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            SetMuisc(); // set selected file.
-
+                SetMuisc(); // set selected file.
+            }
+           
         } // End of NextSong Function
         #endregion
 
@@ -247,11 +252,14 @@ namespace Mink_Player
         /// </summary>
         static public void LastSong()
         {
-            LastInList(); // call to set selected file to next in list
+            if (FileList.Count != 0)
+            {
+                LastInList(); // call to set selected file to next in list
 
-            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+                SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            SetMuisc(); // play selected file.
+                SetMuisc(); // play selected file.
+            }
 
         } // end of LastSong 
         #endregion

@@ -81,8 +81,7 @@
                         Click="btn2_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
 
                 <Button x:Name="btn3" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" BorderBrush="White" Margin="10 0"
-                        Click="btn3_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
-
+                        Click="btn3_Click" Width="30" Height="30" Style="{StaticResource CircleButton}" />
             </StackPanel>
         </Grid>
 
