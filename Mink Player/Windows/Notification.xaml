@@ -17,6 +17,13 @@
         MouseDown="Window_MouseDown"
         Loaded="Window_Loaded">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Style/CircleButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources> 
 
     <Grid>
         <Grid.RowDefinitions>
@@ -63,16 +70,19 @@
             <TextBlock x:Name="NameArtist_TxtBl" Text="Artist Name" Grid.Row="1" HorizontalAlignment="Center"
                        Margin="2 3" FontSize="14" TextTrimming="CharacterEllipsis" Foreground="White"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 5 0 0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 2 0 0">
+                
                 <Button x:Name="btn1" Content="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="18"
                         Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0"
-                        Click="btn1_Click"/>
+                        Click="btn1_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
+                
                 <Button x:Name="btn2" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" FontSize="18"
                         Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0" 
-                        Click="btn2_Click"/>
-                <Button x:Name="btn3" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" FontSize="18"
-                        Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0"
-                        Click="btn3_Click"/>
+                        Click="btn2_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
+
+                <Button x:Name="btn3" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" BorderBrush="White" Margin="10 0"
+                        Click="btn3_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
+
             </StackPanel>
         </Grid>
 
@@ -88,5 +98,6 @@
 
     </Grid>
 
+    
 
 </Window>
