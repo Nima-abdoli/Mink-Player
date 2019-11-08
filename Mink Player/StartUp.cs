@@ -18,9 +18,6 @@ namespace Mink_Player
         // Instance from NotifyIcon
         static public NotifyIcon MyNotify = new NotifyIcon();
 
-        // Instance from Contextmenu Windows Form.
-        static ContextMenu mContextMenu = new ContextMenu(); // To Delete : this is old must be deleted
-
         // Instance from File Dialog for open file to add to list.
         static public Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
         {
@@ -42,9 +39,6 @@ namespace Mink_Player
         // Hold the list index of Selected File.
         static int SelectedMusic { get; set; }
 
-        // Hold the status of Media Player.(Play/Pause)
-        static public bool PlayerStatus { get; set; } // To delete: this property seems to be useless
-
         // Hold player State.
         static public PlayerState PlayerState = PlayerState.Empty;
 
@@ -54,6 +48,7 @@ namespace Mink_Player
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
 
+        // To delete : if decide to don't use it.
         // Create instance from ContextMenu
         //Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
 
@@ -92,11 +87,6 @@ namespace Mink_Player
             MyNotify.Visible = true;
             MyNotify.MouseClick += MyNotify_MouseClick;
 
-            // Call To Setup Context Menu For TrayIcon.
-            //ContexSetup(); // To delete : this is old must be deleted 1
-
-            //MyNotify.ContextMenu = mContextMenu; // To delete : this is old must be deleted 2
-
         }// End Of TrayMaker
         #endregion
 
@@ -109,73 +99,6 @@ namespace Mink_Player
             MyNotify.Dispose(); // Will Dispose trayIcon so icon will remove from tray menu.
 
         }// End of MyApp_Exit
-        #endregion
-
-        #region Context Menu Setup Method
-        /// <summary>
-        /// Setup up Context menu item
-        /// </summary>
-        static void ContexSetup()
-        {
-            // Create Menu item for Dashboard
-            MenuItem DashboardItem = new MenuItem("Dashboard");
-            DashboardItem.Click += DashboardItem_Click;
-
-            // Create menu Item for Select Music
-            MenuItem SelectMItem = new MenuItem("Select Music");
-            SelectMItem.Click += SelectMItem_Click;
-
-            // Create menu Item For Pause Music
-            MenuItem PauseMItem = new MenuItem("Pause Music");
-            PauseMItem.Click += PauseMItem_Click;
-
-            // Create Menu item for Next Music
-            MenuItem NextMItem = new MenuItem("Next Music");
-            NextMItem.Click += NextMItem_Click;
-
-            // Create menu Item for Exit app
-            MenuItem ExitItem = new MenuItem("Exit");
-            ExitItem.Click += ExitItem_Click;
-
-            // created Menu Items added to Contextmenu 
-            mContextMenu.MenuItems.Add(DashboardItem);
-            mContextMenu.MenuItems.Add(SelectMItem);
-            mContextMenu.MenuItems.Add(PauseMItem);
-            mContextMenu.MenuItems.Add(NextMItem);
-            mContextMenu.MenuItems.Add(ExitItem);
-
-        }// End OF ContexSetup
-
-        private static void PauseMItem_Click(object sender, EventArgs e)
-        {
-            if (PlayerState == PlayerState.Play)
-            {
-                PauseMusic();
-            }
-            else if (PlayerState == PlayerState.Pause)
-            {
-                PlayMusic();
-            }
-        }
-        #endregion
-
-        #region NextItem Click Event
-        //To delete : this function/event
-        private static void NextMItem_Click(object sender, EventArgs e)
-        {
-            NextSong();
-        }
-        #endregion
-
-        #region DashBoard Item Click Event
-        /// <summary>
-        /// Click Event for Dashboard item.
-        /// </summary>
-        private static void DashboardItem_Click(object sender, EventArgs e)
-        {
-            Dashboard.Show(); // Show DashBoard Windows.
-
-        }// End of DashboardItem_Click
         #endregion
 
         #region MyNotify MouseClick Event
@@ -191,34 +114,6 @@ namespace Mink_Player
             }
 
         }// End of MyNotify_MouseClick
-        #endregion
-
-        #region Select Music Click Event
-        /// <summary>
-        /// click Event For SelectMuic Item In ContextMenu
-        /// </summary>
-        private static void SelectMItem_Click(object sender, EventArgs e)
-        {
-
-            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
-
-            if (OpenFileDiag.FileName != "")
-            {
-                AddToList(); // add selected music to list
-            }
-
-        }// End of SelectMItem_Click Event
-        #endregion
-
-        #region ExitItem click Event
-        /// <summary>
-        /// click Event For ExitItem In ContextMenu
-        /// </summary>
-        private static void ExitItem_Click(object sender, EventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown(); // Close(Shutdown) This(MyApp) application
-
-        }// End of ExitItem Event
         #endregion
 
         #region Add To List Method
