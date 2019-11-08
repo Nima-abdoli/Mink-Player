@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Mink_Player">
+
+    <FontFamily x:Key="Poiret-one" >pack://applications;,,,/Resources/Fonts/#Poiret One</FontFamily>
+
+
+</ResourceDictionary>

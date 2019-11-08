@@ -136,7 +136,4 @@
   <data name="M_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\m logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PoiretOne_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fonts\poiretone-regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

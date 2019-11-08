@@ -21,6 +21,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Style/CircleButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Style/Fonts.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources> 
@@ -65,10 +66,12 @@
             </Grid.RowDefinitions>
 
             <TextBlock x:Name="NameTrack_TxtBl" Text="Track Name" Grid.Row="0" HorizontalAlignment="Center"
-                       Margin="2 10 2 5" FontSize="16" TextTrimming="CharacterEllipsis" Foreground="White"/>
+                       Margin="2 8 2 4" FontSize="18" TextTrimming="CharacterEllipsis" Foreground="White" 
+                       FontFamily="{StaticResource Poiret-one}"/>
 
             <TextBlock x:Name="NameArtist_TxtBl" Text="Artist Name" Grid.Row="1" HorizontalAlignment="Center"
-                       Margin="2 3" FontSize="14" TextTrimming="CharacterEllipsis" Foreground="White"/>
+                       Margin="2 3 2 1" FontSize="16" TextTrimming="CharacterEllipsis" Foreground="White"
+                       FontFamily="{StaticResource Poiret-one}"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 2 0 0">
                 
