@@ -23,5 +23,25 @@ namespace Mink_Player.Windows
         {
             InitializeComponent();
         }
+
+        private void Title_Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+            
+        }
+
+        private void CloseWindow_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+        }
+
+        private void Minimize_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
     }
 }
