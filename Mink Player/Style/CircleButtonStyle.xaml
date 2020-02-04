@@ -26,9 +26,11 @@
                     </Border>
                     
                     <ControlTemplate.Triggers>
+                        
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="border" Value="#CC343434"/>
                         </Trigger>
+                        
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" TargetName="border" Value="#7F616161"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="#7F000000"/>
