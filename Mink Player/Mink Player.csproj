@@ -153,6 +153,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\Cascadia.ttf" />
     <Resource Include="Resources\Fonts\PoiretOne-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Mink_Player">
 
+    <!-- Poiret One Fonts -->
     <FontFamily x:Key="Poiret-one" >pack://applications;,,,/Resources/Fonts/#Poiret One</FontFamily>
 
+    <!-- Cascadia Code Fonts -->
+    <FontFamily x:Key="Cascadia Code" >pack://applications;,,,/Resources/Fonts/#Cascadia Code</FontFamily>
 
 </ResourceDictionary>
