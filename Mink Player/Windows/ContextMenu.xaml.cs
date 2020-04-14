@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using Microsoft.Win32;
-using TagLib;
 
 namespace Mink_Player.Windows
 {
@@ -57,11 +47,10 @@ namespace Mink_Player.Windows
         public ContextMenu()
         {
             InitializeComponent();
-
         }// End of Constructor
 
         /// <summary>
-        /// Custom Constructor
+        /// Custom Constructor to get File List and mouse Curser
         /// </summary>
         /// <param name="FilePath"> get music file Path</param>
         /// <param name="MouseP"> get the mouse location.</param>
@@ -69,14 +58,14 @@ namespace Mink_Player.Windows
         {
             InitializeComponent();
 
-            //To delete:
+            //To delete: this will be deleted when dashbourd completed 
 #if DEBUG 
             DashBoard_Btn.Visibility = Visibility.Visible;
 #else
             DashBoard_Btn.Visibility = Visibility.Hidden;
 #endif
 
-            SetWindowPlace(MouseP);
+            SetWindowPlace(MouseP); // set ContextMenu Place.
 
             TrackPath = FilePath; // Path to Music file.
 
@@ -85,7 +74,7 @@ namespace Mink_Player.Windows
             MuteIconChanger(); // Call to set Mute/unmute button icon.
 
         }// End of Constructor
-#endregion
+        #endregion
 
         #region ContextMenu Deactivated Event.
         /// <summary>
@@ -147,7 +136,7 @@ namespace Mink_Player.Windows
             Application.Current.Shutdown(); // Close the whole app
 
         }// End of AppClose_Btn Function
-#endregion
+        #endregion
 
         #region Select Music Button Click Event
         /// <summary>
@@ -160,7 +149,7 @@ namespace Mink_Player.Windows
             StartUp.SelectMusic(); // select music from folder by calling this from startup class.
 
         }// End of SelectMusic_Btn_Click Event
-#endregion
+        #endregion
 
         #region previous Button Click Event
         /// <summary>
@@ -171,7 +160,7 @@ namespace Mink_Player.Windows
             StartUp.LastSong(); // Call this function to choose Previous music.
 
         }// End of Previous_Btn_Click
-#endregion
+        #endregion
 
         #region Play Button Click Event
         /// <summary>
@@ -192,7 +181,7 @@ namespace Mink_Player.Windows
             StateIconChanger(); // call to set play/pause button icon.
 
         }// End of Play_Btn_Click
-#endregion
+        #endregion
 
         #region Next Button click Event
         /// <summary>
@@ -204,7 +193,7 @@ namespace Mink_Player.Windows
             StartUp.NextSong(); // Call this function to choose next music.
 
         }// End of Next_Btn_Click 
-#endregion
+        #endregion
 
         #region State Icon Changer
         /// <summary>
@@ -222,7 +211,7 @@ namespace Mink_Player.Windows
             }
 
         }// End of StateIconChanger Function
-#endregion
+        #endregion
 
         #region File Cover Extractor Method
         /// <summary>
@@ -254,11 +243,11 @@ namespace Mink_Player.Windows
                 TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
             }
 
-            Cover_Image.Background = new ImageBrush(TrackCover);
-            BackRound_Image.Source = TrackCover;
+            Cover_Image.Background = new ImageBrush(TrackCover); // Fill Background Image
+            BackRound_Image.Source = TrackCover;  // Fill Track Cover to image View that represent Cover
 
         }// End of CoverExtractor Method
-#endregion
+        #endregion
 
         #region Artist Name Extractor Method
         /// <summary>
@@ -275,7 +264,7 @@ namespace Mink_Player.Windows
                 NameArtist_TxtBl.Text = "";
             }
         } // End of ArtistExtractor Method
-#endregion
+        #endregion
 
         #region Title Extractor Method
         /// <summary>
@@ -292,7 +281,7 @@ namespace Mink_Player.Windows
                 NameTrack_TxtBl.Text = System.IO.Path.GetFileName(TrackPath);
             }
         } // End of TitleExtractor Method
-#endregion
+        #endregion
 
         #region Mute Button Click Event
         /// <summary>
@@ -305,7 +294,7 @@ namespace Mink_Player.Windows
             MuteIconChanger(); // Call to set Mute/unmute button icon.
 
         }// End of MuteBtn_click Event
-#endregion
+        #endregion
 
         #region Mute Icon Changer
         /// <summary>
@@ -324,7 +313,7 @@ namespace Mink_Player.Windows
             }
 
         }// End of MUteIconChanger function
-#endregion
+        #endregion
 
         #region Set Window Place Function
         /// <summary>
@@ -359,7 +348,7 @@ namespace Mink_Player.Windows
             }
 
         }// End of SetWindowPlace
-#endregion
+        #endregion
 
         #region Timer SetUp Function
         /// <summary>
@@ -377,7 +366,7 @@ namespace Mink_Player.Windows
             DTimer.Tick += DTimer_Tick;
 
         }// End of TimerSetUp Function
-#endregion
+        #endregion
 
         #region DTimer Tick Event
         private void DTimer_Tick(object sender, EventArgs e)
@@ -396,7 +385,7 @@ namespace Mink_Player.Windows
             }
 
         }// End of DTimer_Tick
-#endregion
+        #endregion
 
         #region SetUp Slider Function
         /// <summary>
@@ -420,7 +409,7 @@ namespace Mink_Player.Windows
             Context_Slider.Value = StartUp.MPlayer.Position.TotalSeconds;
 
         }// End of SetUpSlider
-#endregion
+        #endregion
 
         #region DragStarted event of Context Slider 
         /// <summary>
@@ -432,7 +421,7 @@ namespace Mink_Player.Windows
             IsSliderDrag = true;
 
         }// End of Context_Slider_DragStarted event
-#endregion
+        #endregion
 
         #region DragCompleted Event of Context Slider.
         /// <summary>
@@ -447,7 +436,7 @@ namespace Mink_Player.Windows
             StartUp.MPlayer.Position = TimeSpan.FromSeconds(Context_Slider.Value);
 
         }// End of Context_Slider_DragCompleted event 
-#endregion
+        #endregion
 
         #region MouseUp Event of Context Slider.
         /// <summary>
@@ -471,7 +460,7 @@ namespace Mink_Player.Windows
             StartUp.Dashboard.Show();
 
         }// end of DashBoard_Btn_Click
-#endregion
+        #endregion
 
     }// End of ContextMenu Class
 }// End of Mink_Player NameSpace

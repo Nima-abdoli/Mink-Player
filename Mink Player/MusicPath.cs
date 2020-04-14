@@ -8,7 +8,7 @@ namespace Mink_Player
 {
     class MusicPath
     {
-        public string Path { get; set; } // path property for MusicPAth Class
+        public string Path { get; set; } // path property for MusicPath Class
 
     }// End of MusicPath Class
 

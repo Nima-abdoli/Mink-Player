@@ -21,7 +21,7 @@ namespace Mink_Player
         // Instance from File Dialog for open file to add to list.
         static public Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
         {
-            Multiselect = true
+            Multiselect = true // User can Select More than one File.
         };
 
         // Hold Time Notification Will Have To be Open.
@@ -47,10 +47,6 @@ namespace Mink_Player
 
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
-
-        // To delete : if decide to don't use it.
-        // Create instance from ContextMenu
-        //Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
 
         #endregion
 
@@ -107,7 +103,7 @@ namespace Mink_Player
         /// </summary>
         private static void MyNotify_MouseClick(object sender, MouseEventArgs e)
         {
-
+            //ToDo : Statment Will Be Deleted if or Change in case of opning by both buttons.
             if (e.Button == MouseButtons.Right)
             {
                 ContextMenuCalling();
@@ -126,7 +122,7 @@ namespace Mink_Player
             // Adding user selected file to list 
             foreach (string mPath in OpenFileDiag.FileNames)
             {
-                FileList.Add(new MusicPath() { Path = mPath });
+                FileList.Add(new MusicPath() { Path = mPath }); // add file to list
             }
 
             // Check if list is empty set selected index to zero
@@ -196,6 +192,7 @@ namespace Mink_Player
         {
             MPlayer.MediaEnded += MPlayer_MediaEnded; // Media Ended Event
 
+            //TODO: user last choose.
             MPlayer.Volume = 100; // set volume to max(100)
 
         }// End of MPLayerSetup
@@ -207,6 +204,7 @@ namespace Mink_Player
         /// </summary>
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
         {
+            // TODO: User Choose in Setting
             //Check if list reach to end don't go to start of list when media end
             if (SelectedMusic + 1 < FileList.Count)
             {
@@ -234,6 +232,7 @@ namespace Mink_Player
         /// </summary>
         static public void NextSong()
         {
+            //Check list to not be empty
             if (FileList.Count != 0)
             {
                 NextInList(); // call to set selected file to next in list
@@ -252,6 +251,7 @@ namespace Mink_Player
         /// </summary>
         static public void LastSong()
         {
+            // Check list to not be empty
             if (FileList.Count != 0)
             {
                 LastInList(); // call to set selected file to next in list
@@ -331,9 +331,7 @@ namespace Mink_Player
         /// Select Music from ContextMenu
         /// </summary>
         public static void SelectMusic()
-        {
-
-            
+        {            
             OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
 
             if (OpenFileDiag.FileName != "")
