@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mink_Player
 {
-    class MusicPath
+    public class MusicPath
     {
         public string Path { get; set; } // path property for MusicPath Class
 
