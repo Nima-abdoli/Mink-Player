@@ -4,7 +4,7 @@
 
     <Style x:Key="CircleButton" TargetType="{x:Type Button}">
 
-        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Padding" Value="2"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -14,15 +14,15 @@
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <Border x:Name="border"
                             CornerRadius="45" 
-                            BorderBrush="{x:Null}"
+                            BorderBrush="Transparent"
                             SnapsToDevicePixels="True">
 
                         <TextBlock x:Name="Textbox1"
                                    Text="{TemplateBinding Content}"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    TextAlignment="Center"
-                                   Margin="2"/>
+                                   Margin="{TemplateBinding Padding}"/>
                     </Border>
                     
                     <ControlTemplate.Triggers>
