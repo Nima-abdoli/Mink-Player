@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mink_Player
 {
-    class MusicPath
+    public class MusicPath
     {
-        public string Path { get; set; } // path property for MusicPAth Class
+        public string Path { get; set; } // path property for MusicPath Class
 
     }// End of MusicPath Class
 
@@ -16,6 +16,11 @@ namespace Mink_Player
     /// Show Player state of player.
     /// </summary>
     public enum PlayerState { Play, Pause, Empty };
+     
+    /// <summary>
+    /// Show Player Mute state of player.
+    /// </summary>
+    public enum PlayerMute { Mute,Unmute};
 
     
 }

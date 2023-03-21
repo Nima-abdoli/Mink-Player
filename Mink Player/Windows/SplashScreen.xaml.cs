@@ -39,9 +39,11 @@ namespace Mink_Player.Windows
         {
             InitializeComponent();
 
+#if DEBUG
+            TimeLeft = 0; // For Debug
+#else
             TimeLeft = RanadomTime(); // set time left
-
-            //TimeLeft = 0; // For Debug
+#endif
 
             Timer.Tick += Timer_Tick; // make tick event for timer
 

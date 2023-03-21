@@ -24,7 +24,7 @@ namespace Mink_Player.Windows
     public partial class Notification : Window
     {
 
-        #region Property of Class
+        #region Private Property
 
         // string to holds Artist Name.
         string ArtistName { get; set; }
@@ -50,6 +50,12 @@ namespace Mink_Player.Windows
         #endregion
 
         #region Constructors for Notification Windows
+
+        /// <summary>
+        /// Costum Constructor 
+        /// </summary>
+        /// <param name="FilePath">File Path to get info out of it</param>
+        /// <param name="TimeLeft">Time to notification be closed</param>
         public Notification(string FilePath, int TimeLeft)
         {
             InitializeComponent();
@@ -63,6 +69,9 @@ namespace Mink_Player.Windows
             TimeToStay = TimeLeft; // Time Left To This Windows Closing.
         }
 
+        /// <summary>
+        /// Defult Constructor
+        /// </summary>
         public Notification()
         {
             InitializeComponent();
@@ -70,7 +79,8 @@ namespace Mink_Player.Windows
             //Set startup location of notification windows
             Left = SystemParameters.WorkArea.Width - (Width + 15);
             Top = SystemParameters.WorkArea.Height - (Height + 15);
-        }
+
+        }// End of Defult Constructor
         #endregion
 
         #region Load Event of Notification Window 
@@ -110,6 +120,7 @@ namespace Mink_Player.Windows
                     TimeToStay = 2; // Set timetostay equal to 2, so Timer Handle closing Animation and closing 
                 }
             }
+
         }// End of Windows_MouseDown
         #endregion
 
@@ -143,8 +154,8 @@ namespace Mink_Player.Windows
                 TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
             }
 
-            Cover_Image.Background = new ImageBrush(TrackCover);
-            BackRound_Image.Source = TrackCover;
+            Cover_Image.Background = new ImageBrush(TrackCover); // Fill Background Image
+            BackRound_Image.Source = TrackCover; // Fill Track Cover to image View that represent Cover
 
         }// End of CoverExtractor Method
         #endregion
@@ -163,6 +174,7 @@ namespace Mink_Player.Windows
             {
                 NameArtist_TxtBl.Text = "";
             }
+
         } // End of ArtistExtractor Method
         #endregion
 
@@ -180,6 +192,7 @@ namespace Mink_Player.Windows
             {
                 NameTrack_TxtBl.Text = System.IO.Path.GetFileName(TrackPath);
             }
+
         } // End of TitleExtractor Method
         #endregion
 
@@ -192,9 +205,9 @@ namespace Mink_Player.Windows
             DoubleAnimation da = new DoubleAnimation();
             da.From = 0;
             da.To = 1;
-            da.Duration = TimeSpan.FromMilliseconds(900);
+            da.Duration = TimeSpan.FromMilliseconds(900); // animtaion Time countdown
 
-            this.BeginAnimation(OpacityProperty, da);
+            this.BeginAnimation(OpacityProperty, da); // Start animation
 
         }// end of FadeInAnimation()
         #endregion
@@ -208,16 +221,17 @@ namespace Mink_Player.Windows
             DoubleAnimation da = new DoubleAnimation();
             da.From = 1;
             da.To = 0;
-            da.Duration = TimeSpan.FromMilliseconds(900);
+            da.Duration = TimeSpan.FromMilliseconds(900); // Animation Time CountDown
 
-            this.BeginAnimation(OpacityProperty, da);
+            this.BeginAnimation(OpacityProperty, da); // Start Animation
 
         }// end of FadeOutAnimation()
         #endregion
 
         #region Timer Method
         /// <summary>
-        /// Timer method Will handle Time left to Close Notification Windows. 
+        /// Timer method Will handle Time left to Close Notification Windows.
+        /// and Config Timer.
         /// </summary>
         void Timer()
         {
@@ -247,14 +261,15 @@ namespace Mink_Player.Windows
             // Check to Close App in Certain Time.
             else if (TimeToStay == 0)
             {
-                GC.Collect();
-                this.Close();
+                DTimer.Stop(); // stop Timer. no more use of CPU.
+                GC.Collect(); // Call GC to Clean Memory.
+                this.Close(); // Notification Closed(hopefully remove from memory to 😁)
             }
 
         }// End of Dtimer_Tick Event
         #endregion
 
-        #region Btn1 Click Event 
+        #region Btn1 Click Event(Previous Button)
         /// <summary>
         /// click event of Btn1, Previous Button
         /// </summary>
@@ -265,17 +280,18 @@ namespace Mink_Player.Windows
         }// End of Btn1_Click
         #endregion
 
-        #region Btn2 Click Event
+        #region Btn2 Click Event(Play/Pause Button)
         /// <summary>
         /// Click event of Button 2. Play/Pause Button
         /// </summary>
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
             StartUp.PauseMusic();
+
         }// End Of Btn2_click event
         #endregion
 
-        #region Btn3 Click Event
+        #region Btn3 Click Event(Next Button)
         /// <summary>
         /// Click event of Btn3, Next Button
         /// </summary>
