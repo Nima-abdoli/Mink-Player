@@ -84,13 +84,21 @@
 
             <Button x:Name="SettingBtn" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20"
                         Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting" Visibility="Hidden"
+<<<<<<< HEAD
                         HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"
                         Style="{StaticResource CircleButton}"/>
+=======
+                        HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"/>
+>>>>>>> 5a461884-revert-from-MinkFramework
 
             <Button x:Name="MuteBtn" Content="&#xE995;" FontFamily="Segoe MDL2 Assets" FontSize="20"
                     Width="30" Height="30" Margin="0 10 20 0" Grid.Row="0" ToolTip="Mute/Unmute Sound"
                     HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"
+<<<<<<< HEAD
                     Click="MuteBtn_Click" Style="{StaticResource CircleButton}"/>
+=======
+                    Click="MuteBtn_Click"/>
+>>>>>>> 5a461884-revert-from-MinkFramework
 
             <TextBlock x:Name="NameTrack_TxtBl" Text="Music Title"  Grid.Row="1" Margin="3,15,3,0" HorizontalAlignment="Center"
                        FontSize="20" Foreground="#FFECECEC" Height="24" VerticalAlignment="Top" 
@@ -147,6 +155,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+<<<<<<< HEAD
                 <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
                         FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
@@ -156,6 +165,16 @@
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Visible"
                         FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" HorizontalContentAlignment="Center"
                         Click="DashBoard_Btn_Click" Style="{StaticResource CircleButton}"/>
+=======
+                <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="25" Height="25" Foreground="#FFECECEC"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
+                        FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
+                        Click="SelectMusic_Btn_Click" />
+
+                <Button x:Name="DashBoard_Btn" Grid.Column="1" Width="25" Height="25" Foreground="#FFECECEC"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Hidden"
+                        FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" />
+>>>>>>> 5a461884-revert-from-MinkFramework
 
                 <Button x:Name="AppClose_Btn" Grid.Column="2" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Close Mink Player"
