@@ -49,7 +49,6 @@ namespace Mink_Player.Windows
             InitializeComponent();
         }// End of Constructor
 
-<<<<<<< HEAD
         /// <summary>
         /// Custom Constructor to get File List and mouse Curser
         /// </summary>
@@ -67,33 +66,13 @@ namespace Mink_Player.Windows
 #endif
 
             SetWindowPlace(MouseP); // set ContextMenu Place.
-=======
-        }// End of Constructor
-
-        /// <summary>
-        /// Custom Constructor
-        /// </summary>
-        /// <param name="FilePath"> get music file Path</param>
-        /// <param name="MouseP"> get the mouse location.</param>
-        public ContextMenu(string FilePath,System.Drawing.Point MouseP)
-        {
-            InitializeComponent();
-
-            // set position of window were mouse is.
-            Left = MouseP.X - 115; 
-            Top = SystemParameters.WorkArea.Height - 275;
->>>>>>> 5a461884-revert-from-MinkFramework
 
             TrackPath = FilePath; // Path to Music file.
 
             StateIconChanger(); // call to set play/pause button icon.
 
             MuteIconChanger(); // Call to set Mute/unmute button icon.
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> 5a461884-revert-from-MinkFramework
         }// End of Constructor
         #endregion
 
@@ -124,23 +103,17 @@ namespace Mink_Player.Windows
 
             sb.Begin(); // Begin Slide Up Function
 
-<<<<<<< HEAD
             TimerSetup(); // call to setup timer in ContextMenu
 
-=======
->>>>>>> 5a461884-revert-from-MinkFramework
             // check to be sure file is available if not don't get meta of nothing
             if (TrackPath != null)
             {
                 FileTag = TagLib.File.Create(TrackPath); // Set and Make tag From File path that give to it. 
 
-<<<<<<< HEAD
                 DTimer.Start(); // start timer when music is selected.
 
                 SetUpSlider(); // call to setup slider in contextmenu.
 
-=======
->>>>>>> 5a461884-revert-from-MinkFramework
                 CoverExtractor(); // Call To Extract Cover From File.
 
                 ArtistExtractor(); // Call To Extract Artist Name from File.
@@ -176,11 +149,7 @@ namespace Mink_Player.Windows
             StartUp.SelectMusic(); // select music from folder by calling this from startup class.
 
         }// End of SelectMusic_Btn_Click Event
-<<<<<<< HEAD
         #endregion
-=======
-        #endregion 
->>>>>>> 5a461884-revert-from-MinkFramework
 
         #region previous Button Click Event
         /// <summary>
@@ -274,13 +243,8 @@ namespace Mink_Player.Windows
                 TrackCover = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/Cover/Cassette.png", UriKind.RelativeOrAbsolute));
             }
 
-<<<<<<< HEAD
             Cover_Image.Background = new ImageBrush(TrackCover); // Fill Background Image
             BackRound_Image.Source = TrackCover;  // Fill Track Cover to image View that represent Cover
-=======
-            Cover_Image.Background = new ImageBrush(TrackCover);
-            BackRound_Image.Source = TrackCover;
->>>>>>> 5a461884-revert-from-MinkFramework
 
         }// End of CoverExtractor Method
         #endregion
@@ -351,7 +315,6 @@ namespace Mink_Player.Windows
         }// End of MUteIconChanger function
         #endregion
 
-<<<<<<< HEAD
         #region Set Window Place Function
         /// <summary>
         /// set context window place in start up it
@@ -499,7 +462,5 @@ namespace Mink_Player.Windows
         }// end of DashBoard_Btn_Click
         #endregion
 
-=======
->>>>>>> 5a461884-revert-from-MinkFramework
     }// End of ContextMenu Class
 }// End of Mink_Player NameSpace

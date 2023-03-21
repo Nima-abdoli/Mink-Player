@@ -348,27 +348,6 @@ namespace Mink_Player
         /// </summary>
         static void ContextMenuCalling()
         {
-<<<<<<< HEAD
-=======
-
-            
-            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
-
-            if (OpenFileDiag.FileName != "")
-            {
-                AddToList(); // add selected music to list
-            }
-
-        }// End of SelectMItem_Click Event
-        #endregion
-
-        #region Context Menu Calling Function
-        /// <summary>
-        /// this function call contextmenu and handle 
-        /// </summary>
-        static void ContextMenuCalling()
-        {
->>>>>>> 5a461884-revert-from-MinkFramework
             // check if list is empty or not.
             if (FileList.Count > 0)
             {
