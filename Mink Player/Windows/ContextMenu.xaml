@@ -17,19 +17,23 @@
         Loaded="Window_Loaded">
 
     <Window.Resources>
-        <Storyboard x:Key="SlideUp">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainGrid">
-                <EasingThicknessKeyFrame KeyTime="0" Value="0,270,0,-272"/>
-                <EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="0"/>
-            </ThicknessAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
+        <ResourceDictionary>
 
-    <!--<Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource SlideUp}"/>
-        </EventTrigger>
-    </Window.Triggers>-->
+            <Storyboard x:Key="SlideUp">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="MainGrid">
+                    <EasingThicknessKeyFrame KeyTime="0" Value="0,270,0,-272"/>
+                    <EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="0"/>
+                </ThicknessAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Style/CircleButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Style/XSlider.xaml"/>
+                <ResourceDictionary Source="/Style/Fonts.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
 
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
@@ -79,19 +83,30 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="SettingBtn" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20"
-                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting"
+                        Width="30" Height="30" Margin="20 10 0 0" Grid.Row="0" ToolTip="Open Setting" Visibility="Hidden"
+<<<<<<< HEAD
+                        HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"
+                        Style="{StaticResource CircleButton}"/>
+=======
                         HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"/>
+>>>>>>> 5a461884-revert-from-MinkFramework
 
-            <Button x:Name="MuteBtn" Content="&#xE74F;" FontFamily="Segoe MDL2 Assets" FontSize="20"
-                        Width="30" Height="30" Margin="0 10 20 0" Grid.Row="0" ToolTip="Mute/Unmute Sound"
-                        HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"/>
+            <Button x:Name="MuteBtn" Content="&#xE995;" FontFamily="Segoe MDL2 Assets" FontSize="20"
+                    Width="30" Height="30" Margin="0 10 20 0" Grid.Row="0" ToolTip="Mute/Unmute Sound"
+                    HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFECECEC"
+<<<<<<< HEAD
+                    Click="MuteBtn_Click" Style="{StaticResource CircleButton}"/>
+=======
+                    Click="MuteBtn_Click"/>
+>>>>>>> 5a461884-revert-from-MinkFramework
 
             <TextBlock x:Name="NameTrack_TxtBl" Text="Music Title"  Grid.Row="1" Margin="3,15,3,0" HorizontalAlignment="Center"
-                       FontSize="18" Foreground="#FFECECEC" Height="24" VerticalAlignment="Top" 
-                       TextTrimming="CharacterEllipsis"/>
+                       FontSize="20" Foreground="#FFECECEC" Height="24" VerticalAlignment="Top" 
+                       TextTrimming="CharacterEllipsis" FontFamily="{StaticResource Poiret-one}" />
 
             <TextBlock x:Name="NameArtist_TxtBl" Text="Artist" Grid.Row="2" HorizontalAlignment="Center" Margin="3 5 3 0"
-                       FontSize="16" Foreground="#FFECECEC" TextTrimming="CharacterEllipsis"/>
+                       FontSize="18" Foreground="#FFECECEC" TextTrimming="CharacterEllipsis" 
+                       FontFamily="{StaticResource Poiret-one}" />
 
             <!-- Slider Grid -->
             <Grid Grid.Row="3" >
@@ -100,31 +115,36 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="00:00" HorizontalAlignment="Left" FontSize="11" Margin="10 0 0 0"
-                           RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC"/>
-                <TextBlock Text="00:00" HorizontalAlignment="Right" FontSize="11" Margin="0 0 10 0"
-                           RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC"/>
+                <TextBlock x:Name="TimePass_TxtBl" Text="00:00" HorizontalAlignment="Left" FontSize="11" Margin="10 0 0 0"
+                           RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC" />
+                <TextBlock x:Name="TotalTime_TxtBl" Text="00:00" HorizontalAlignment="Right" FontSize="11" Margin="0 0 10 0"
+                           RenderOptions.BitmapScalingMode="HighQuality" Foreground="#FFECECEC" />
 
-                <Slider Grid.Row="1" Margin="10 4" />
-
+                <Slider x:Name="Context_Slider" Grid.Row="1" Margin="10 4" IsMoveToPointEnabled="True" 
+                        Maximum="0" Minimum="0"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Thumb.DragStarted="Context_Slider_DragStarted"
+                        Thumb.DragCompleted="Context_Slider_DragCompleted"
+                        MouseUp="Context_Slider_MouseUp"/>
+                
             </Grid>
 
-            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 4 0 0">
 
-                <Button x:Name="Previous_Btn" Grid.Column="0" Width="25" Height="25" Foreground="#FFECECEC"
+                <Button x:Name="Previous_Btn" Grid.Column="0" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Previous Music" Margin="10 0 10 0"
                         FontSize="20" Content="&#xE76B;" FontFamily="Segoe MDL2 Assets" 
-                        Click="Previous_Btn_Click"/>
+                        Click="Previous_Btn_Click" Style="{StaticResource CircleButton}"/>
 
-                <Button x:Name="Play_Btn" Grid.Column="1" Width="25" Height="25" Foreground="#FFECECEC"
+                <Button x:Name="Play_Btn" Grid.Column="1" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Play/Pause Music" Margin="10 0 10 0"
                         FontSize="20" Content="&#xE769;" FontFamily="Segoe MDL2 Assets" 
-                        Click="Play_Btn_Click"/>
+                        Click="Play_Btn_Click" Style="{StaticResource CircleButton}"/>
 
-                <Button x:Name="Next_Btn" Grid.Column="2" Width="25" Height="25" Foreground="#FFECECEC"
+                <Button x:Name="Next_Btn" Grid.Column="2" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Next Music" Margin="10 0 10 0"
                         FontSize="20" Content="&#xE76C;" FontFamily="Segoe MDL2 Assets" 
-                        Click="Next_Btn_Click"/>
+                        Click="Next_Btn_Click" Style="{StaticResource CircleButton}"/>
 
             </StackPanel>
 
@@ -135,19 +155,31 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+<<<<<<< HEAD
+                <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="30" Height="30" Foreground="#FFECECEC"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
+                        FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
+                        Click="SelectMusic_Btn_Click" Style="{StaticResource CircleButton}"/>
+
+                <Button x:Name="DashBoard_Btn" Grid.Column="1" Width="30" Height="30" Foreground="#FFECECEC"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Visible"
+                        FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" HorizontalContentAlignment="Center"
+                        Click="DashBoard_Btn_Click" Style="{StaticResource CircleButton}"/>
+=======
                 <Button x:Name="SelectMusic_Btn" Grid.Column="0" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Select Music from File"
-                        FontSize="20" Content="&#xE762;" FontFamily="Segoe MDL2 Assets" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Add Music from File"
+                        FontSize="20" Content="&#xE8F4;" FontFamily="Segoe MDL2 Assets" 
                         Click="SelectMusic_Btn_Click" />
 
                 <Button x:Name="DashBoard_Btn" Grid.Column="1" Width="25" Height="25" Foreground="#FFECECEC"
-                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard"
+                        Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Open DashBoard" Visibility="Hidden"
                         FontSize="20" Content="&#xF246;" FontFamily="Segoe MDL2 Assets" />
+>>>>>>> 5a461884-revert-from-MinkFramework
 
-                <Button x:Name="AppClose_Btn" Grid.Column="2" Width="25" Height="25" Foreground="#FFECECEC"
+                <Button x:Name="AppClose_Btn" Grid.Column="2" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Close Mink Player"
                         FontSize="20" Content="&#xE7E8;" FontFamily="Segoe MDL2 Assets" 
-                        Click="AppClose_Btn_Click"/>
+                        Click="AppClose_Btn_Click" Style="{StaticResource CircleButton}"/>
 
             </Grid>
 
@@ -156,10 +188,13 @@
 
 
         <!-- Cover Image -->
-        <Border x:Name="Cover_Image" Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" >
+        <Border x:Name="Cover_Image" Width="100" Height="100" CornerRadius="10" Grid.RowSpan="2" VerticalAlignment="Top" 
+                RenderOptions.BitmapScalingMode="HighQuality">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
+            </Border.Effect>
             <Border.Background>
-                <ImageBrush ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png"
-                            RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/Mink Player;component/Resources/Images/Cover/Cassette.png" Stretch="Uniform" />
             </Border.Background>
         </Border>
 

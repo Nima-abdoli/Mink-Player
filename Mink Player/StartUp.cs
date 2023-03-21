@@ -18,13 +18,10 @@ namespace Mink_Player
         // Instance from NotifyIcon
         static public NotifyIcon MyNotify = new NotifyIcon();
 
-        // Instance from Contextmenu Windows Form.
-        static ContextMenu mContextMenu = new ContextMenu(); // To Delete : this is old must be deleted
-
         // Instance from File Dialog for open file to add to list.
         static public Microsoft.Win32.OpenFileDialog OpenFileDiag = new Microsoft.Win32.OpenFileDialog()
         {
-            Multiselect = true
+            Multiselect = true // User can Select More than one File.
         };
 
         // Hold Time Notification Will Have To be Open.
@@ -34,25 +31,22 @@ namespace Mink_Player
         static List<MusicPath> FileList = new List<MusicPath>();
 
         // Create static instance from Dashboard windows.
-        static Windows.Dashboard Dashboard = new Windows.Dashboard();
+        static public Windows.Dashboard Dashboard = new Windows.Dashboard();
 
         // Create static instance from Media player element.
-        static MediaPlayer MPlayer = new MediaPlayer();
+        static public MediaPlayer MPlayer = new MediaPlayer();
 
         // Hold the list index of Selected File.
         static int SelectedMusic { get; set; }
 
-        // Hold the status of Media Player.(Play/Pause)
-        static public bool PlayerStatus { get; set; }
-
         // Hold player State.
         static public PlayerState PlayerState = PlayerState.Empty;
 
+        // Hold Player Mute/unmute State
+        static public PlayerMute PlyerMutestate = PlayerMute.Unmute;
+
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
-
-        // Create instance from ContextMenu
-        //Windows.ContextMenu ContexMenu = new Windows.ContextMenu();
 
         #endregion
 
@@ -75,7 +69,7 @@ namespace Mink_Player
             Dashboard.Hide(); // Hide dashboard so app wont close.
 
             MyApp.Run(); // Run Application 
-
+            
         }//End of Main
         #endregion    
 
@@ -88,11 +82,6 @@ namespace Mink_Player
             MyNotify.Icon = Properties.Resources.mTrayEmpty;
             MyNotify.Visible = true;
             MyNotify.MouseClick += MyNotify_MouseClick;
-
-            // Call To Setup Context Menu For TrayIcon.
-            //ContexSetup(); // To delete : this is old must be deleted 1
-
-            //MyNotify.ContextMenu = mContextMenu; // To delete : this is old must be deleted 2
 
         }// End Of TrayMaker
         #endregion
@@ -108,114 +97,19 @@ namespace Mink_Player
         }// End of MyApp_Exit
         #endregion
 
-        #region Context Menu Setup Method
-        /// <summary>
-        /// Setup up Context menu item
-        /// </summary>
-        static void ContexSetup()
-        {
-            // Create Menu item for Dashboard
-            MenuItem DashboardItem = new MenuItem("Dashboard");
-            DashboardItem.Click += DashboardItem_Click;
-
-            // Create menu Item for Select Music
-            MenuItem SelectMItem = new MenuItem("Select Music");
-            SelectMItem.Click += SelectMItem_Click;
-
-            // Create menu Item For Pause Music
-            MenuItem PauseMItem = new MenuItem("Pause Music");
-            PauseMItem.Click += PauseMItem_Click;
-
-            // Create Menu item for Next Music
-            MenuItem NextMItem = new MenuItem("Next Music");
-            NextMItem.Click += NextMItem_Click;
-
-            // Create menu Item for Exit app
-            MenuItem ExitItem = new MenuItem("Exit");
-            ExitItem.Click += ExitItem_Click;
-
-            // created Menu Items added to Contextmenu 
-            mContextMenu.MenuItems.Add(DashboardItem);
-            mContextMenu.MenuItems.Add(SelectMItem);
-            mContextMenu.MenuItems.Add(PauseMItem);
-            mContextMenu.MenuItems.Add(NextMItem);
-            mContextMenu.MenuItems.Add(ExitItem);
-
-        }// End OF ContexSetup
-
-        private static void PauseMItem_Click(object sender, EventArgs e)
-        {
-            if (PlayerState == PlayerState.Play)
-            {
-                PauseMusic();
-            }
-            else if (PlayerState == PlayerState.Pause)
-            {
-                PlayMusic();
-            }
-        }
-        #endregion
-
-        #region NextItem Click Event
-        //To delete : this function/event
-        private static void NextMItem_Click(object sender, EventArgs e)
-        {
-            NextSong();
-        }
-        #endregion
-
-        #region DashBoard Item Click Event
-        /// <summary>
-        /// Click Event for Dashboard item.
-        /// </summary>
-        private static void DashboardItem_Click(object sender, EventArgs e)
-        {
-            Dashboard.Show(); // Show DashBoard Windows.
-
-        }// End of DashboardItem_Click
-        #endregion
-
         #region MyNotify MouseClick Event
         /// <summary>
         /// Mouse Click Event for MyNotify
         /// </summary>
         private static void MyNotify_MouseClick(object sender, MouseEventArgs e)
         {
-
+            //ToDo : Statment Will Be Deleted if or Change in case of opning by both buttons.
             if (e.Button == MouseButtons.Right)
             {
                 ContextMenuCalling();
             }
 
         }// End of MyNotify_MouseClick
-        #endregion
-
-        #region Select Music Click Event
-        /// <summary>
-        /// click Event For SelectMuic Item In ContextMenu
-        /// </summary>
-        private static void SelectMItem_Click(object sender, EventArgs e)
-        {
-
-            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
-
-            if (OpenFileDiag.FileName != "")
-            {
-                AddToList(); // add selected music to list
-            }
-
-        }// End of SelectMItem_Click Event
-        #endregion
-
-        #region ExitItem click Event
-        /// <summary>
-        /// click Event For ExitItem In ContextMenu
-        /// </summary>
-        private static void ExitItem_Click(object sender, EventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown(); // Close(Shutdown) This(MyApp) application
-
-        }// End of ExitItem Event
         #endregion
 
         #region Add To List Method
@@ -228,7 +122,7 @@ namespace Mink_Player
             // Adding user selected file to list 
             foreach (string mPath in OpenFileDiag.FileNames)
             {
-                FileList.Add(new MusicPath() { Path = mPath });
+                FileList.Add(new MusicPath() { Path = mPath }); // add file to list
             }
 
             // Check if list is empty set selected index to zero
@@ -298,6 +192,7 @@ namespace Mink_Player
         {
             MPlayer.MediaEnded += MPlayer_MediaEnded; // Media Ended Event
 
+            //TODO: user last choose.
             MPlayer.Volume = 100; // set volume to max(100)
 
         }// End of MPLayerSetup
@@ -309,6 +204,7 @@ namespace Mink_Player
         /// </summary>
         static private void MPlayer_MediaEnded(object sender, EventArgs e)
         {
+            // TODO: User Choose in Setting
             //Check if list reach to end don't go to start of list when media end
             if (SelectedMusic + 1 < FileList.Count)
             {
@@ -320,9 +216,11 @@ namespace Mink_Player
             }
             else
             {
-                NextInList(); // select first music of list when list reach to end
+               // NextInList(); // select first music of list when list reach to end
 
                 SetState(PlayerState.Pause); // Set player state to Pause 
+
+                MPlayer.Stop(); // stop the player so music will go to top, and it will start from last music played.
             }
 
         }// End of MPlayer_MediaEnded
@@ -334,12 +232,16 @@ namespace Mink_Player
         /// </summary>
         static public void NextSong()
         {
-            NextInList(); // call to set selected file to next in list
+            //Check list to not be empty
+            if (FileList.Count != 0)
+            {
+                NextInList(); // call to set selected file to next in list
 
-            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+                SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            SetMuisc(); // set selected file.
-
+                SetMuisc(); // set selected file.
+            }
+           
         } // End of NextSong Function
         #endregion
 
@@ -349,11 +251,15 @@ namespace Mink_Player
         /// </summary>
         static public void LastSong()
         {
-            LastInList(); // call to set selected file to next in list
+            // Check list to not be empty
+            if (FileList.Count != 0)
+            {
+                LastInList(); // call to set selected file to next in list
 
-            SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
+                SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-            SetMuisc(); // play selected file.
+                SetMuisc(); // play selected file.
+            }
 
         } // end of LastSong 
         #endregion
@@ -425,7 +331,25 @@ namespace Mink_Player
         /// Select Music from ContextMenu
         /// </summary>
         public static void SelectMusic()
+        {            
+            OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
+
+            if (OpenFileDiag.FileName != "")
+            {
+                AddToList(); // add selected music to list
+            }
+
+        }// End of SelectMItem_Click Event
+        #endregion
+
+        #region Context Menu Calling Function
+        /// <summary>
+        /// this function call contextmenu and handle 
+        /// </summary>
+        static void ContextMenuCalling()
         {
+<<<<<<< HEAD
+=======
 
             
             OpenFileDiag.ShowDialog(); // Show OpenDialog To Choose music File
@@ -444,6 +368,7 @@ namespace Mink_Player
         /// </summary>
         static void ContextMenuCalling()
         {
+>>>>>>> 5a461884-revert-from-MinkFramework
             // check if list is empty or not.
             if (FileList.Count > 0)
             {
@@ -459,6 +384,27 @@ namespace Mink_Player
             }
 
         }// End of ContextMenuCalling fiction
+        #endregion
+
+        #region Muting Player 
+        /// <summary>
+        /// Mute and unmute player
+        /// </summary>
+        static public void MutePlayer()
+        {
+
+            if (StartUp.PlyerMutestate == PlayerMute.Mute)
+            {
+                PlyerMutestate = PlayerMute.Unmute;
+                MPlayer.IsMuted = false;
+            }
+            else if (StartUp.PlyerMutestate == PlayerMute.Unmute)
+            {
+                PlyerMutestate = PlayerMute.Mute;
+                MPlayer.IsMuted = true;
+            }
+
+        }// End Of MutePLayer Function
         #endregion
 
     }// End of StartUp class
