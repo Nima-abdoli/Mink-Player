@@ -62,7 +62,7 @@ namespace Mink_Player
 
             SplashScreen.Show(); // Show Splash Screen on app Start
 
-            //TrayMaker(); // Call TrayMaker Method To setup TrayIcon.
+            //TrayMaker(); // Call TrayMaker Method To setup TrayIcon. it will be called from splashscreen
 
             MPlayerSetup(); // setup property of media player.
 
@@ -104,7 +104,7 @@ namespace Mink_Player
         private static void MyNotify_MouseClick(object sender, MouseEventArgs e)
         {
             //ToDo : Statment Will Be Deleted if or Change in case of opning by both buttons.
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right || e.Button == MouseButtons.Left)
             {
                 ContextMenuCalling();
             }
