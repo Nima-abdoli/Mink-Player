@@ -138,10 +138,6 @@
                     <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#CC976953"/>
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#7F976953"/>
                 </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="rectangle9">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="15"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="15"/>
-                </DoubleAnimationUsingKeyFrames>
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
                     <EasingColorKeyFrame KeyTime="0" Value="#7F976953"/>
                     <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#7F976953"/>
@@ -257,16 +253,16 @@
             <Grid x:Name="Progressgrid" Grid.Row="3" >
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Rectangle x:Name="rectangle" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle1" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle2" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle3" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle4" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle5" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle6" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle7" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle8" Width="15" Height="15" Fill="#7F976953"/>
-                    <Rectangle x:Name="rectangle9" Width="15" Height="15" Fill="#7F976953"/>
+                    <Rectangle x:Name="rectangle"  Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle1" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle2" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle3" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle4" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle5" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle6" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle7" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle8" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle9" Width="4" Height="15" Fill="#7F976953" RadiusX="02" RadiusY="2"/>
                 </StackPanel>
 
             </Grid>

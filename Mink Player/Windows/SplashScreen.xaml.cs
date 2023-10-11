@@ -138,7 +138,7 @@ namespace Mink_Player.Windows
         /// <returns>Return random int 2 - 5</returns>
         int RanadomTime()
         {
-            return new Random().Next(2, 5); // make random number between 2 - 5. and return it to caller
+            return new Random().Next(2, 3); // make random number between 2 - 5. and return it to caller
 
         }// End of RandomTime Method
         #endregion
