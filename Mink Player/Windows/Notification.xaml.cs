@@ -296,7 +296,27 @@ namespace Mink_Player.Windows
                 StartUp.PlayMusic(); // Play music.
             }
 
+            StateIconChanger(); // call to set play/pause button icon.
+
         }// End Of Btn2_click event
+        #endregion
+
+        #region State Icon Changer
+        /// <summary>
+        /// change play/pause button icon by the state of player.
+        /// </summary>
+        void StateIconChanger()
+        {
+            if (StartUp.PlayerState == PlayerState.Play)
+            {
+                btn2.Content = "\uE769"; // Change button icon to pause icon
+            }
+            else if (StartUp.PlayerState == PlayerState.Pause)
+            {
+                btn2.Content = "\uE768"; // change button icon to play icon.
+            }
+
+        }// End of StateIconChanger Function
         #endregion
 
         #region Btn3 Click Event(Next Button)

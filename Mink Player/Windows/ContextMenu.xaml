@@ -130,7 +130,7 @@
 
                 <Button x:Name="Play_Btn" Grid.Column="1" Width="30" Height="30" Foreground="#FFECECEC"
                         Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="Play/Pause Music" Margin="10 0 10 0"
-                        FontSize="20" Content="&#xE769;" FontFamily="Segoe MDL2 Assets" 
+                        FontSize="20" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" 
                         Click="Play_Btn_Click" Style="{StaticResource CircleButton}"/>
 
                 <Button x:Name="Next_Btn" Grid.Column="2" Width="30" Height="30" Foreground="#FFECECEC"

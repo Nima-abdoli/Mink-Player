@@ -203,11 +203,11 @@ namespace Mink_Player.Windows
         {
             if (StartUp.PlayerState == PlayerState.Play)
             {
-                Play_Btn.Content = "\uE768"; // Change button icon to play icon
+                Play_Btn.Content = "\uE769"; // Change button icon to pause icon
             }
             else if (StartUp.PlayerState == PlayerState.Pause)
             {
-                Play_Btn.Content = "\uE769"; // change button icon to pause icon.
+                Play_Btn.Content = "\uE768"; // change button icon to play icon.
             }
 
         }// End of StateIconChanger Function
