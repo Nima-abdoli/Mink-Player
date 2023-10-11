@@ -78,8 +78,8 @@
                 <Button x:Name="btn1" Content="&#xE76B;" FontFamily="Segoe MDL2 Assets" FontSize="18"
                         Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0"
                         Click="btn1_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
-                
-                <Button x:Name="btn2" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" FontSize="18"
+
+                <Button x:Name="btn2" Content="&#xE769;" FontFamily="Segoe MDL2 Assets" FontSize="18"
                         Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Margin="10 0" 
                         Click="btn2_Click" Width="30" Height="30" Style="{StaticResource CircleButton}"/>
 

@@ -286,7 +286,15 @@ namespace Mink_Player.Windows
         /// </summary>
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-            StartUp.PauseMusic();
+            // Check if state of player in play, pause it.
+            if (StartUp.PlayerState == PlayerState.Play)
+            {
+                StartUp.PauseMusic(); // pause music
+            }
+            else if (StartUp.PlayerState == PlayerState.Pause) // Check if state of player in pause, play it.
+            {
+                StartUp.PlayMusic(); // Play music.
+            }
 
         }// End Of Btn2_click event
         #endregion
