@@ -87,6 +87,7 @@ namespace Mink_Player
             MyNotify.Icon = Properties.Resources.mTrayEmpty;
             MyNotify.Visible = true;
             MyNotify.MouseClick += MyNotify_MouseClick;
+            MyNotify.Text = "Mink Player";
 
         }// End Of TrayMaker
         #endregion
