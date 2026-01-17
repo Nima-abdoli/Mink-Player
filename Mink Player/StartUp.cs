@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Ignore Spelling: Mutestate App Diag
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
@@ -28,7 +30,10 @@ namespace Mink_Player
         static int NotificationTime = 10;
 
         // Hold List of All File user Choose to Play
-        static List<MusicPath> FileList = new List<MusicPath>();
+        static public List<MusicPath> FileList = new List<MusicPath>();
+
+        //Hold List of file(song) infos
+        static public List<SongInfos> songInfos = new List<SongInfos>();
 
         // Create static instance from Dashboard windows.
         static public Windows.Dashboard Dashboard = new Windows.Dashboard();
@@ -43,7 +48,7 @@ namespace Mink_Player
         static public PlayerState PlayerState = PlayerState.Empty;
 
         // Hold Player Mute/unmute State
-        static public PlayerMute PlyerMutestate = PlayerMute.Unmute;
+        static public PlayerMute PlayerMutestate = PlayerMute.Unmute;
 
         // Create instance from Splash Screen.
         static Windows.SplashScreen SplashScreen = new Windows.SplashScreen();
@@ -130,7 +135,7 @@ namespace Mink_Player
             {
                 SelectedMusic = 0;  // set selected index in first time
 
-                SetMuisc(); // set Music For the First time
+                SetMusic(); // set Music For the First time
 
             }
 
@@ -161,7 +166,7 @@ namespace Mink_Player
         /// <summary>
         /// Set Music from selected path to player.
         /// </summary>
-        static public void SetMuisc()
+        static public void SetMusic()
         {
             MPlayer.Open(new Uri(FileList[SelectedMusic].Path)); // open selected music to music player
 
@@ -212,7 +217,7 @@ namespace Mink_Player
 
                 SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-                SetMuisc(); // set selected file.
+                SetMusic(); // set selected file.
             }
             else
             {
@@ -239,7 +244,7 @@ namespace Mink_Player
 
                 SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-                SetMuisc(); // set selected file.
+                SetMusic(); // set selected file.
             }
            
         } // End of NextSong Function
@@ -258,7 +263,7 @@ namespace Mink_Player
 
                 SetState(PlayerState.Pause); // set state to pause temporarily to play function work.
 
-                SetMuisc(); // play selected file.
+                SetMusic(); // play selected file.
             }
 
         } // end of LastSong 
@@ -351,9 +356,7 @@ namespace Mink_Player
             // check if list is empty or not.
             if (FileList.Count > 0)
             {
-
                 Windows.ContextMenu ContexMenu = new Windows.ContextMenu(FileList[SelectedMusic].Path, Cursor.Position);
-
                 ContexMenu.Show(); // Show Context Menu
             }
             else
@@ -372,19 +375,26 @@ namespace Mink_Player
         static public void MutePlayer()
         {
 
-            if (StartUp.PlyerMutestate == PlayerMute.Mute)
+            if (StartUp.PlayerMutestate == PlayerMute.Mute)
             {
-                PlyerMutestate = PlayerMute.Unmute;
+                PlayerMutestate = PlayerMute.Unmute;
                 MPlayer.IsMuted = false;
             }
-            else if (StartUp.PlyerMutestate == PlayerMute.Unmute)
+            else if (StartUp.PlayerMutestate == PlayerMute.Unmute)
             {
-                PlyerMutestate = PlayerMute.Mute;
+                PlayerMutestate = PlayerMute.Mute;
                 MPlayer.IsMuted = true;
             }
 
         }// End Of MutePLayer Function
         #endregion
+
+
+        static public void Test()
+        {
+            
+           
+        }
 
     }// End of StartUp class
 }// End of Mink_Player NameSpace
