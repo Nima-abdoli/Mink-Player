@@ -217,7 +217,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="AppVerTxtBl" Text="ver : 0.4.49" FontSize="9" Foreground="#FFC49B6F" 
+            <TextBlock x:Name="AppVerTxtBl" Text="ver : 0.4.50" FontSize="9" Foreground="#FFC49B6F" 
                    Margin="12 0 0 1" FontFamily="Calibri"/>
 
             <Image x:Name="AppImage" HorizontalAlignment="Center" Grid.Row="1"
@@ -253,16 +253,16 @@
             <Grid x:Name="Progressgrid" Grid.Row="3" >
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Rectangle x:Name="rectangle"  Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle1" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle2" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle3" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle4" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle5" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle6" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle7" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle8" Width="4" Height="15" Fill="#7F976953" RadiusX="2" RadiusY="2"/>
-                    <Rectangle x:Name="rectangle9" Width="4" Height="15" Fill="#7F976953" RadiusX="02" RadiusY="2"/>
+                    <Rectangle x:Name="rectangle"  Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle1" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle2" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle3" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle4" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle5" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle6" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle7" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle8" Width="4" Height="15" Fill="#7F976953" />
+                    <Rectangle x:Name="rectangle9" Width="4" Height="15" Fill="#7F976953" />
                 </StackPanel>
 
             </Grid>
