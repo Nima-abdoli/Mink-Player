@@ -1,8 +1,12 @@
-﻿using System;
+﻿// Ignore Spelling: Filepath
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+
 
 namespace Mink_Player
 {
@@ -21,6 +25,5 @@ namespace Mink_Player
     /// Show Player Mute state of player.
     /// </summary>
     public enum PlayerMute { Mute,Unmute};
-
     
 }

@@ -303,11 +303,11 @@ namespace Mink_Player.Windows
         private void MuteIconChanger()
         {
 
-            if (StartUp.PlyerMutestate == PlayerMute.Mute)
+            if (StartUp.PlayerMutestate == PlayerMute.Mute)
             {
                 MuteBtn.Content = "\uE74F"; // set the mute icon to Mute
             }
-            else if (StartUp.PlyerMutestate == PlayerMute.Unmute)
+            else if (StartUp.PlayerMutestate == PlayerMute.Unmute)
             {
                 MuteBtn.Content = "\uE995"; // set the mute icon to UnMute.
             }
